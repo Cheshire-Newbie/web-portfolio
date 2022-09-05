@@ -19,6 +19,14 @@
           <div>Road Map</div>
           <div>Projects</div>
           <div>Hire me!</div>
+          <div>About me</div>
+          <div>Road Map</div>
+          <div>Projects</div>
+          <div>Hire me!</div>
+          <div>About me</div>
+          <div>Road Map</div>
+          <div>Projects</div>
+          <div>Hire me!</div>
         </div>
       </div>
     </v-expand-x-transition>
