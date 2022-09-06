@@ -1,0 +1,395 @@
+    pomocne linki:
+    https://vuetifyjs.com/en/styles/flex/#flex-align-content
+    https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+vue --version   = zeby sprawdzic czy jest zainstalowany poprawnie
+vue create (tytul folderu)   = nadanie imienia projektowi
+vue 2 (by mozliwe bylo uzywanie vuetify)    = to umozliwia duzo opcji ulatwiajacych programowanie
+    vue = tworze wlasne tagi html, a potem moge je wykorzystac jako osobne komendy
+    vuetify = ma duza baze danych preimpostowanych komend
+cd (tytul folderu)  = wchodze do folderu w ktorym bede pracowac
+cd..    = cofam sie do poprzedniego folderu
+npm run serve   = serwisuje strone w przegladarce
+MOJA STRONA = localhost:8080
+localhost = kim jestem dla swiata - moj adres IP
+8080    = to port z ktorym sie komunikuje ze swiatem by widziec jak wyglada to, co programuje
+pkt 10 jest w mojej sieci lokalnej, nie w sieci internetowej ogolnej
+networkhost jest tym samym co local  ale zamiast automatycznie podpisywac moje ip, ukazuje go. 
+    uzywanie local na innym komputerze w innym miejscu, 
+    sprawi ze ip bedzie inne i to nie bedzie moja strona.
+    networkhost= 192.168.1.50:8080
+    192.168.1.50  adres IP
+zeby wyjsc z hostowania CTRL + C
+npm run build   = bierze wszystki dane i zippuje je,
+    by mozna bylo je wgrac na strone skompresowane w ladny kod
+src= pliki zrodlowe aplikacji
+node_modules    = tutaj znajduja sie wszystkie pakiety programow zainstalowanych
+public  = tutaj po npm run build trafia moj kod scompresowany
+assets  = tutaj pliki graficzne/dzwiekowe/etc
+plugin  = pluginy vue/vue add nazwa
+    vuetify.jest= pozwala na konfiguracje personalna tego plaginu co dodalam
+CTRL + S= zapisz
+anchor  = zmienia kolor linkow na stronie. normalnie sa zlaczone ze zmiana z obiectem prymary
+.json= javascript obiect notation
+.json to jest slownik i stylistyczne ustawienie kodu, ktorym operuje przy pisaniu kodu 
+    by rozpoznawal program czego od niego chce
+    klucz/obiect : wartosc/charakterystyka
+    prymary      : #db9c9f
+w kazdej klamrze/objeckie dany klucz moze wystepowac tylko raz, jak nie, to da blad
+HELLOWORLD  =   jest komponentem
+pliki vue sa komponentami z ktorych tworzy sie strone, by nie jebac milion linijek kodu htm, ale by 
+    to bylo bardziej przejrzyste i rozdzielone na czytelne elementy
+komponent   = fragment kodu ktory jest wyspecjalizowany w stricte jednej funkcji wybranej przez 
+    programiste. mozna go uzywac wielokrotnie na stronie, bez koniecznosci rozpisywania opcji i 
+        funkcjonowania, tylko wklepujesz tag komponentu
+    np. komponent odpowiadajacy za przycisk (v-btn), za kalendarz na stronie (v-calendar)
+v-main  = glowna wartstwa strony
+    (ta karta gdzie jest potem widoczne wszystko co zostalo zapisane i wrzucone w innych opcjach)
+cd (TAB)    = probuje ci znalezc folder ktory szukasz
+API = jak wyszukuje w internecie na stronach vuetify informacji o danych komponentach, haslo API
+    pokazuje mi szczwegolowe opcje i mozliwosci danego komponentu
+<v-btn href=""> = href jest prop (wlasnosc/wlasciwosc) dla tego danego komponentu, 
+    ktora umozliwia wrzucenie pod przycisk linku, ktory po nacisnieciu przycisku wyskakuje)
+prop= wartosc ktora chcemy przekazac do komponentu. komponent rozpoznaje konkretna wartosc propu i 
+    jesli wpiszemy jakas wartosc propowi, to komponent rozpoznaje co chcemy zrobic
+target="_blank" = odpowiada stricte za to gdzie zostanie otworzony link. 
+    w tym wypadku zostanie otworzony na nowej karcie.
+app.vue = jest to taka najbardziej wierzchnia warstwa strony, do ktorej nie powinny byc wrzucane 
+    male komponenty, albo czyste tagi html, zeby zachowac czystosc kodu. 
+    tresc V-app-bar i v-main powinna zawierac sie w kompletnych komponentach.
+    np: komponent nazywajacy sie homepage (ktory potem mialby w sobie mniejsze komponenty i bylby
+    obecny w COMPONENTS w swoim folderze, by sie ladnie i czysto widzialo)
+
+
+                    PRZYKLAD CZYSTEGO KOMPONENT (MOJ BLONDYN O NIEBIESKICH OCZACH)
+
+<template>
+</template>
+
+<script>
+  export default {
+    name: 'Appbar',
+    data: () => (
+
+        { 
+    }
+    ),
+  }
+</script>
+
+
+komponenty kompletne i samozawierajace sie nie musza miec tagu zamykajacego, 
+    moga byc otwarte i zamkniete w tym samym <helloword/> <AppBar/> 
+    <br/> (to jest zwykly html tag ktory tworzy nowa linie (enter))
+    Normalnie wyglada tak: <div>....</div>
+vue oczekuje ze w template bedzie dokladnie jeden element. Jesli masz wiecej rzeczy do wrzucenia tam, 
+    wrzuc je do jednego, duzego diva <div></div>
+
+d-flex  = klasa vuetify, ktora dodaje danemu elementowi wlasciwosci 
+    flexboxa (domyslna wlasciwosc zwyklego html e css.)
+flexboxa    = jest typem pozycjonowania elementow na stronie i pozwala on na umieszczenie 
+    w rownych odstepach elementow obok siebie
+align-center    = klasa ktora zrownuje posrodku wszystkie komponentu w srodku tego elementu
+                        <div class="d-flex align-center">
+<v-spacer></v-spacer> tworzy odstep miedzy dwoma elementami
+style="width: 100%";    = okreslenie szerokosci elementu, wiec wtedy bieze pod uwage cala szerokosc 
+    elementu (tutaj cala strona, bo appbar zajmuje jako pasek cala strona, wiec tym sposobem 
+    ladnie centralizuje elelementy zawarte). 
+    normalnie powinno brac pod uwage rozmiary rodzica w ktorym jest element, 
+    ale nie raz trzeba to okreslic osobno
+justify-space-between   = cala przestrzen rodzica jest wykorzystana by oddzielic elementy wen zawarte
+
+shift+alt+f = porzatkowanie kodu
+
+                jesli przy otwartym oknie gdzie cos robie widze duza biala kropka obok, 
+                to znaczy ze musze zapisac, bo to co zrobilam, nie jest zapisane
+
+v-container fluid   = prop ktory dopasowuje ten komponent do rozmiaru rzeczywistego strony
+
+ {{ nazwaGuzika }}  = dwie klamry sluza by vue wiedzialo ze bezposrednio odnosimy sie do javascript,
+    wiec jest traktowane jakby bylo czysto kodem, a nie jakimis pierdolami vue (this.nazwaGuzika)
+
+   By dodac jeden komponent do innego komponentu, pamietaj by potraktowac go jak DIV i nowy komponent 
+    dodac po nawiasie trojkatnym pierwszego komponentu i przed koncem komponentu 
+    Przed tagiem zamykajacym i po tagu otwierajacym
+
+                    <v-btn
+                        class="red"
+                        icon
+                        x-large
+                        href="https://www.google.it"
+                        target="_blank"
+                    >
+                        <v-icon color="black">mdi-google</v-icon>
+                    </v-btn>
+
+
+this.   = jest to slowo kluczowe ktore pozwala nam odniesc sie do komponentu w ktorym sie 
+    znajdujemy. 
+    this.buttonLoading na HelloWorld moze miec kompletnie inne 
+    wlasciwosci niz this.buttonLoading na appBar
+
+= operator przypisania (zmienna = wartosc)
+! operator logiczny zaprzecza wartosci po sobie true/false 
+: odnosi sie bezposrednio dla atrybutow. sluzy by vue wiedzialo ze bezposrednio odnosimy sie do 
+    javascript, wiec jest traktowane jakby bylo czysto kodem, a nie jakimis pierdolami vue
+     (jak batmany)   
+=== operator logiczny przyrownania i on sprawdza czy dwie wartosci sa sobie rowne
+!== operator logiczny roznosci, sprawdza czy dwie wartosci sa sobie rozne
+$ odnosi sie bezposrednio do wlasciwosci komponentu, a nie do wartosci ktora my ustawilismy
+  (this.$vuetify.theme.dark = !this.$vuetify.theme.dark)
+  czyli tutaj mowimy calemu kompoentowi, ze jesli nie jest ustawiony tryb dzienny, to ma byc jasny (zmienna logiczna true/false)
+
+
+this.buttonLoading = !this.buttonLoading   ---- to znaczy: do zmiennej przypisujemy jej zaprzeczenie
+
+@click  = @ oznacza podpiecie wydarzenia pod komponent 
+    (w tym wypadku jest klikniecie w moj przycisk = click)
+
+setTimeout()    = funkcja wbudowana w javascript. przyjmuje dwa argumenty. jednym z nich jest 
+    funkcja, ktora bedzie miala sie wydarzyc po uplynieciu czasu, 
+    drugim jest czas w milisekundach, po ktorym wspomniana funkcja sie wydarzy.
+
+
+                    roznica miedzy metoda a funkcja, jest nastepujaca. 
+                Metoda jest funkcja przypisana do danego obiektu (podobnie jak zmienne)
+            a funkcja jest wykonywalnym kawalkiem kodu (moze byc przypisana pod konkretna nazwa)
+
+
+Typy wartosci zmiennych
+  
+  PRYMITYWNE
+  zmienna prymitywna, jest taka, do ktorej przy wykonywaniu jakiejsc funkcji odnosimy sie bezposrednio, 
+  oczekujac jakas wartosc konkretna
+    boolean/bool  = typy zmiennych logicznych true/false 
+      (1/true 0/false pusty string/false string z czymkolwiek/true undefined/false null/false)
+    liczby  = wszystkie liczby w kodzie
+    string  = wszystkie teksty w kodzie zamykane w cudzysłowy "", apostrofy '', backticki ``
+    undefined (niezdefiniowany) = jest to wartosc zmiennej ktorej nigdy nie przypisano zadnej wartosci 
+      (moze wystepowac jako blad, poniewaz np nie przekazalismy argumentu do funkcji)
+        
+        toggleLoading() {
+          this.buttonLoading = !this.buttonLoading;
+          this.sum(3);
+        },
+        sum(a, b) {
+          console.log(a + b);
+        },
+        ----- w tym momencie w console.log po wykonaniu tej funkcji wyrzuci blad undefined,
+              poniewaz b nie zostalo w argumencie okreslone jakkolwiek
+
+    null  = calkowity brak czegokolwiek w wartosci do ktorej sie odnosimy 
+      (musi byc ustawiony swiadomie)
+
+  ZLOZONE/REFERENCYJNE/OBIECTOWE
+  kazda zmienna inna od prymitywnych jest obiektem
+    obiekt  = jest to struktura danych zamknieta zazwyczaj w batmanach {}, 
+      ktora posiada pola, w ktorych w polewej stronie wpisuje sie nazwe/klucz : wartosc
+
+      bubuBubu() {
+        let zmienna = {
+        klucz: "wartosc",
+        klucz2: true,
+        klucz3: {
+          podpole: 3,
+        },
+      };
+      
+      zmienna.klucz3.podpole = zmienna.klucz3.podpole + 2;
+      zmienna.klucz3.podpole = zmienna.klucz3.podpole + 2;
+      console.log(zmienna);
+    },
+
+        ----- stworzylismy obiekt, ktory posiada dwa pola klucz i klucz2
+              zmienna.klucz = to jest potrzebne by odniesc sie bezposrednio do wartosci pola 
+              (jesli prymitywny, badz do obiektu wen zamieszczonego, 
+              jesli referencyjny/obiectowty/zlozony)
+
+    let zmienna = pozwala stworzyc zmienna wewnatrz funkcji, ktora istnieje tylko lokalnie 
+      (czyli jest dostepna tylko i wylacznie w tej funkcji w ktorej zostala zapisana. 
+      Jesli sprobujesz sie do niej odniesc w innym miejscu, dostaniesz error: undefiend ).
+        
+        sum(a, b) {
+        let zmienna = a + b
+        console.log(zmienna);
+        },
+
+    array  = zmienna ktora slozy do przechowywania listy wartosci lub obiektow. 
+    Tworzy sie ja przy uzyciu []. listy sa zaindeksowane w okreslonej kolejnosci, 
+    pierwsza z wartosci jest pod indeksem 0.
+    Nazwiasy kwadratowe pozwalaja odniesc sie do danego elementu listy
+    Dla samych obiektow (czyli np. klucz3), w nawiasach kwadratowych przy obiekcie(czyli klucz3[]) 
+    mozemy wpisac klucz (czyli klucz3["podpole"]) zeby odniesc sie bezposrednio do danego pola po nazwie
+
+ZADANIE DOMOWE
+https://developer.mozilla.org/pl/docs/Web/JavaScript/Guide/Grammar_and_types
+  
+
+v-if  = prop przypisywany do elemtnow html badz komponentow Vue, ktory w oparciu o przekazana 
+zmienna, badz wyrazenie decyduje o tym czy dany element powinien zostac wyrenderowany
+    wyrenderowane   = interpretowanie kodu na widoczne na stronie elementy  
+
+V-for   = prop przypisywany do elemtnow html badz komponentow Vue, ktory w oparciu o przekazane
+    wyrazenie wyciaga ze zmiennej z lista poszczegolne jej elementy 
+    (opcjonalnie wraz z indexami)
+    dla kazdego elementu ze wskazanej listy tworzy nowy element HTML 
+    bedacy kopia elemntu do ktorego przypisany byl prop
+key = vue wymaga przy propie v-for byl stworzony unikalny klucz. Klucze sa potrzebne 
+    do renderowania listy z ktorej korzystamy. Robimy dwukropek bo to operator logiczny a my 
+    nie chcemy by odnioslo sie do tego co tam mamy jako tekstu, ale 
+    bezposrednio jako wartosc o ktorej mowa.
+
+            kiedy pisze f-for do diva, musze obowiazkowo nad mu swoj wlasny i unikalny klucz.
+
+
+zadanie domowe: inteligentne zastosowanie v-for i v-if w macieju
+
+
+v-for="(wartosc,index) of zmienna.klucz4" :key="index"
+index: w tym wypadku to bedzie to, co tam wypunktowuje kiedy wysqwwietla liste od zawierac
+wartosc: to fdruga wartosc ktora bedzie wyswietlana i to jest element mojej listy
+zmienna.klucz4": to jest moja lista elelentow
+
+obiekt=wartosc w wypadku listy listaLudzi, poniewaz jest zlozona z wielu obiektow
+
+
+
+
+
+
+
+
+ <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+
+
+            <v-card>
+            <v-btn @click="pokazDaneLudzi = 'imie'"></v-btn>
+              <v-btn @click="pokazDaneLudzi = 'nazwisko'"></v-btn>
+              <v-btn @click="pokazDaneLudzi = 'wiek'"> </v-btn>
+              <v-btn @click="pokazDaneLudzi = 'rozmiar'"> </v-btn>
+              <v-btn @click="pokazDaneLudzi = null"> </v-btn>
+              <v-card-text
+                v-for="(obiektCzlowiek, index) of listaLudzi"
+                :key="index"
+              >
+                <div v-if="pokazDaneLudzi">
+                  {{ obiektCzlowiek[pokazDaneLudzi] }}
+                </div>
+              </v-card-text>
+              </v-card>
+
+
+
+              zadanie domowe:
+              stworzyc komponent do ktorego jako propa przekazemy objekt z listy listaLudzi,
+              oraz nazwe pola ktore chcemy wyswietlac. W samym komponencie zas bedziemy decydowac ktore z pol chcemy wyswietlic i 
+              bedziemy je formatowac i wyswietlac.
+              (dwa propy, jeden generalny odnoszacy sie do objektu z listy, a drugi do nazwy pola danego objektu)
+
+
+              petle i if (definicje)
+https://vuejs.org/v2/guide/instance.html
+              do czego jest beforecreate, destroyed
+
+
+
+
+
+
+roadmap
+
+  full stack developer podstawowe umietnosci:
+    - git
+    - npm
+    - nauka jezyka angielskiego bez niecheci (ze zezwolonymi lzami rozpaczy i agonii)
+    - tworzenie frontend (html css javascript)
+      * javascript dla frontend
+      * vue/vuex/vuetify
+      * moment.js
+    - polaczenie/korzystanie z bazy danych (firestore, podstawy sql)
+      * przechowywanie/dostawanie sie/przepustowosc plikow (glowne pole dla asynchroniczosc)
+      * tworzenie baz danych w firestore
+    - komunicazia miedzy front/backend (serwery)
+      * Node.js
+      * uslugi googlecloud (google-cloud-functions, app engine, pubsub, google storage, )
+      * express (rest api)
+    - hostowanie strony (firebase)
+      * kupowanie domen
+
+  biblioteki i frameworki:
+    - scss/sass
+    - react/redux (to samo cu vuex dla vue)
+    - vite
+    - electron (np visual studio code, discord)
+    - react-native (jesli bedziemy mieli czas na zabawe z app na tel)
+  
+  proces developmentu:
+    - ci/cd (continous integration/ continous development)
+    - scrum/agile (pobieznie - filozofia pracy nowoczesnych programistow)
+
+  jezyki programowania:
+    - javascript
+    - typescript
+    - podstawy pythona
+
+  projekty (kolejnosc ustanowiona przez Zbysia):
+    1. portfolio (ono bedzie rozwijane w kolejne projekty, jako moja strona "do presentacji")
+    2. procesowanie jsonow/xml
+    3. ?
+    4. ?
+    5. gra multiplayer kierowana wzrokiem (ping-pong kierowany wzrokiem)  
+    6. gra przegladarkowa (responsywna, by byla widoczna na telefonie)
+    7. strona do sesji
+
+
+    tworzenie reposytorium github
+
+    -pobranie github client
+    https://github.com/cli/cli/releases/download/v2.14.7/gh_2.14.7_windows_amd64.msi
+    -pobranie git
+    https://github.com/git-for-windows/git/releases/download/v2.37.3.windows.1/Git-2.37.3-64-bit.exe
+    - wejdz w cmd
+              - gh auth login
+              - polaczenie z twoim kontem github
+              - polaczenie z projektem 
+              cd ...(sciezka projektu widoczna w terminalu)
+              - git init -b main
+              - git add . && git commit -m "initial commit"
+              - gh repo create
+              - odpowiedz na pytania systemu
+
+              What would you like to do? Push an existing local repository to GitHub
+              ? Path to local repository (.)
+              
+              ? Path to local repository .
+              ? Repository name (plac-zabaw)
+              
+              ? Repository name plac-zabaw
+              ? Description
+              
+              ? Description
+              ? Visibility Private
+              ✓ Created repository Cheshire-Newbie/plac-zabaw on GitHub
+              ? Add a remote? Yes
+              ? What should the new remote be called? (origin)
+              
+              ? What should the new remote be called? origin
+              ✓ Added remote https://github.com/Cheshire-Newbie/plac-zabaw.git
+              ? Would you like to push commits from the current branch to "origin"? Yes
+              ✓ Pushed commits to https://github.com/Cheshire-Newbie/plac-zabaw.git
+
+    - w terminalu na VS (dodawanie novych commitow)
+              - po wejsciu do twojego projektu
+              git add -A
+              -git commit -m "nazwa commitu"
+
+
+
+  
+
+
+
+
+
