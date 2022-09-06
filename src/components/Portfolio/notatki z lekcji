@@ -384,6 +384,7 @@ roadmap
               - po wejsciu do twojego projektu
               git add -A
               -git commit -m "nazwa commitu"
+              - git push
 
 
 
