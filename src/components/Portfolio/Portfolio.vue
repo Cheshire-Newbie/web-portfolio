@@ -6,6 +6,7 @@
     </div> -->
     <div class="menu-bar primary">
       <div class="hamburger" @click="menuStart">
+        <div class="opacityMode tertiary"/>
         <span class="tertiary"></span>
       </div>
       <v-btn icon large class="switchButton" @click="dayMode">
@@ -15,14 +16,6 @@
     <v-expand-x-transition>
       <div class="menuList secondary" v-if="menuList">
         <div class="linkText secondaryAccent tertiary--text">
-          <div>About me</div>
-          <div>Road Map</div>
-          <div>Projects</div>
-          <div>Hire me!</div>
-          <div>About me</div>
-          <div>Road Map</div>
-          <div>Projects</div>
-          <div>Hire me!</div>
           <div>About me</div>
           <div>Road Map</div>
           <div>Projects</div>

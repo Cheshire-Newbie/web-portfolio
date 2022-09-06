@@ -1,64 +1,32 @@
 <template>
-  <v-app>
-    <!-- <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+  <v-app id="container" class="background">
+    <!-- <div class="center">
+        {{content}}
+        {{pusta}}
+    </div> -->
+    <div class="menu-bar primary" app>
+      <div class="hamburger" @click="menuStart">
+        <div class="opacityMode tertiary" />
+        <span class="tertiary"></span>
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <v-btn icon large class="switchButton" @click="dayMode">
+        <v-icon>{{ lightBulbIcon }}</v-icon>
       </v-btn>
-    </v-app-bar> -->
+    </div>
+    <v-expand-x-transition>
+      <div class="menuList secondary" v-if="menuList">
+        <div class="linkText secondaryAccent tertiary--text">
+          <div>About me</div>
+          <div>Road Map</div>
+          <div>Projects</div>
+          <div>Hire me!</div>
+        </div>
+      </div>
+    </v-expand-x-transition>
 
-    <v-main>
-      <!-- <HelloWorld/> -->
-      <Portfolio/>
-      <RoadMap/>
-    </v-main>
+    <router-view> </router-view>
   </v-app>
 </template>
 
-<script>
-// import HelloWorld from './components/HelloWorld';
-import Portfolio from './components/Portfolio/Portfolio.vue';
-
-export default {
-  name: 'App',
-
-  components: {
-    // HelloWorld,
-    Portfolio,
-  },
-
-  data: () => ({
-    //
-  }),
-};
-</script>
+<script src="./App.js"/>
+<style src="./App.css"/>

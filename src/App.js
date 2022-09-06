@@ -1,4 +1,4 @@
-import RoadMap from './RoadMap.vue'
+import RoadMap from './components/RoadMap/RoadMap.vue'
 
 export default {
 
@@ -6,7 +6,7 @@ export default {
         RoadMap,
       },
 
-    name: "Portfolio",
+    name: "App",
 
     data: () => ({
 
@@ -38,8 +38,6 @@ export default {
         },
 
         dayMode() {
-            const containerElement = document.getElementById( "container");
-            containerElement.classList.toggle("daymode")
             if (this.lightBulbIcon !== "mdi-weather-night") 
                 this.lightBulbIcon="mdi-weather-night"
             else this.lightBulbIcon="mdi-white-balance-sunny"

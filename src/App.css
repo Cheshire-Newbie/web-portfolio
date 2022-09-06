@@ -35,6 +35,7 @@
 .menuList {
     width: 15%;
     height: 92%;
+    top: 8%;
     position: absolute;
     /* border: 1px solid black; */
     /* sluzy do zawijania tekstu wewnatrz swojego diva */
@@ -52,58 +53,46 @@
 }
 
 .hamburger {
-    position: fixed;
-    top: 15px;
+    position: relative;
+    top: 10px;
     left: 20px;
-    height: 30px;
+    height: 40px;
     width: 40px;
     border-radius: 10px;
-}
-
-.hamburger.tetriary {
-    background-color: transparent !important; 
-}
-
-.hamburger::before {
-    height: 30px;
-    width: 40px;
-    border-radius: 10px;
-    content: "";
-    opacity: 0;
-    display: inline-block;
-}
-
-.hamburger:hover::before {
-    opacity: 0.2;
 }
 
 .hamburger>span,
 .hamburger>span::after,
 .hamburger>span::before {
-    width: 30px;
+    width: 26px;
     height: 3px;
     display: block;
     position: absolute;
-    transition: all ease-in-out .5s;
+   
 }
 
 .hamburger>span {
-    top: 15px;
-    left: 5px;
+    top: 18.5px;
+    left: 7px;
+    transition: all ease-in-out .5s;
 }
 
 .hamburger>span::after {
     top: 10px;
     content: '';
+    background-color: inherit;
+    transition: top .5s ease-in-out, transform .5s ease-in-out;
 }
 
 .hamburger>span::before {
     top: -10px;
     content: '';
+    background-color: inherit;
+    transition: top .5s ease-in-out, transform .5s ease-in-out;
 }
 
 .hamburger.active>span {
-    transform: rotate(225deg);
+    transform: rotate(135deg);
 }
 
 .hamburger.active>span::after {
@@ -114,6 +103,21 @@
 .hamburger.active>span::before {
     top: 0px;
     transform: rotate(0deg);
+}
+
+.opacityMode {
+    opacity: 0;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 100%;
+}
+
+.hamburger:hover>.opacityMode {
+    opacity: 0.2;
+
 }
 
 .linkText {
