@@ -87,27 +87,5 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {};
-  },
-};
-</script>
-
-<style scoped>
-.container {
-  height: 92%;
-  width: 100%;
- 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.textRoadMap {
-  font-size: 20px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-</style>
+<script src="./RoadMap.js"/>
+<style src="./RoadMap.css"/>

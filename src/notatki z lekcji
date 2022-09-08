@@ -64,11 +64,12 @@ app.vue = jest to taka najbardziej wierzchnia warstwa strony, do ktorej nie powi
                     PRZYKLAD CZYSTEGO KOMPONENT (MOJ BLONDYN O NIEBIESKICH OCZACH)
 
 <template>
+  <div></div>
 </template>
 
 <script>
   export default {
-    name: 'Appbar',
+    name: 'Name',
     data: () => (
 
         { 

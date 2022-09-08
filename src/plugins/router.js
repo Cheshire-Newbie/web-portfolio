@@ -5,10 +5,21 @@ Vue.use(VueRouter)
 
 const routes = [
     {
+        name: "AboutMe",
+        path: "/about_me",
+        component: () => import("@/components/AboutMe/AboutMe.vue")
+    },
+    {
+        name: "RoadMap",
+        path: "/road_map",
+        component: () => import("@/components/RoadMap/RoadMap.vue")
+    },
+    {
         name: "default",
         path: "/*",
-        component: () => import("@/components/RoadMap/RoadMap.vue")
-    }
+        component: () => import("@/components/AboutMe/AboutMe.vue")
+    },
+
 ]
 
 const router = new VueRouter({

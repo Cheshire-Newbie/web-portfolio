@@ -16,10 +16,10 @@
     <v-expand-x-transition>
       <div class="menuList secondary" v-if="menuList">
         <div class="linkText secondaryAccent tertiary--text">
-          <div>About me</div>
-          <div>Road Map</div>
-          <div>Projects</div>
-          <div>Hire me!</div>
+          <v-btn depressed color="secondaryAccent" to="/about_me">About me</v-btn>
+         <v-btn depressed color="secondaryAccent" to="/road_map">Road Map</v-btn>
+          <v-btn depressed color="secondaryAccent" to="/about_me">Projects</v-btn>
+          <v-btn depressed color="secondaryAccent" to="/road_map">Hire me!</v-btn>
         </div>
       </div>
     </v-expand-x-transition>
