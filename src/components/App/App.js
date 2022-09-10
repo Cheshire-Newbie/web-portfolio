@@ -1,25 +1,23 @@
-import RoadMap from './components/RoadMap/RoadMap.vue'
+import MenuList from "./MenuList/MenuList.vue";
 
 export default {
 
     components: {
-        RoadMap,
-      },
+        MenuList,
+    },
 
     name: "App",
 
     data: () => ({
 
-        menuList: false,
+        showMenuList: false,
         lightBulbIcon: "mdi-weather-night",
-        RoadMap: true,
-
     }),
 
     methods: {
         menuStart() {
-            if (!this.menuList) {
-                this.menuList = !this.menuList;
+            if (!this.showMenuList) {
+                this.showMenuList = !this.showMenuList;
                 setTimeout(() => {
                     const menuListElement = document.querySelector(".menuList");
                     menuListElement.classList.toggle("active");
@@ -28,19 +26,17 @@ export default {
                 const menuListElement = document.querySelector(".menuList");
                 menuListElement.classList.toggle("active");
                 setTimeout(() => {
-                    this.menuList = !this.menuList;
+                    this.showMenuList = !this.showMenuList;
                 }, 500);
             }
             const hamburgerElement = document.querySelector(".hamburger");
             hamburgerElement.classList.toggle("active");
-
-
         },
 
         dayMode() {
-            if (this.lightBulbIcon !== "mdi-weather-night") 
-                this.lightBulbIcon="mdi-weather-night"
-            else this.lightBulbIcon="mdi-white-balance-sunny"
+            if (this.lightBulbIcon !== "mdi-weather-night")
+                this.lightBulbIcon = "mdi-weather-night"
+            else this.lightBulbIcon = "mdi-white-balance-sunny"
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark
         }
 

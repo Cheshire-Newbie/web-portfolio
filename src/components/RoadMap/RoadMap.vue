@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="textRoadMap">Road Map</div>
+    <div class="myPersonalText">Road Map</div>
     <v-list>
       <!-- <v-list-item>
         <v-list-item-content>

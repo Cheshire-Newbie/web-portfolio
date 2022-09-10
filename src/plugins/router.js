@@ -15,10 +15,22 @@ const routes = [
         component: () => import("@/components/RoadMap/RoadMap.vue")
     },
     {
-        name: "default",
-        path: "/*",
-        component: () => import("@/components/AboutMe/AboutMe.vue")
+        name: "Projects",
+        path: "/projects",
+        component: () => import("@/components/Projects/Projects.vue")
     },
+    {
+        name: "HireMe",
+        path: "/hire_me",
+        component: () => import("@/components/HireMe/HireMe.vue")
+    },
+    {
+        name: "Home",
+        path: "/*",
+        component: () => import("@/components/Home/Home.vue")
+    },
+
+
 
 ]
 

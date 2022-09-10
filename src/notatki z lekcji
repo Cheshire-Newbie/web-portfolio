@@ -141,6 +141,15 @@ $ odnosi sie bezposrednio do wlasciwosci komponentu, a nie do wartosci ktora my 
   (this.$vuetify.theme.dark = !this.$vuetify.theme.dark)
   czyli tutaj mowimy calemu kompoentowi, ze jesli nie jest ustawiony tryb dzienny, to ma byc jasny (zmienna logiczna true/false)
 
+  new - slowo kluczowe sluzace do stworzenia obeiktu danej klasy
+    const router = new VueRouter({
+      mode: "history",
+      base: process.env.BASE_URL,
+      routes,
+  })
+  do zmiennej router jest przepisany nowy obiekt klasy VueRouter, ktora to ma swoje wlasciwosci rozpisane w nawiasach okraglych
+  (SKROTOWY OPIS DLA WYTLUMACZENIA NEW)
+
 
 this.buttonLoading = !this.buttonLoading   ---- to znaczy: do zmiennej przypisujemy jej zaprzeczenie
 
@@ -388,6 +397,10 @@ roadmap
               - git push
 
 
+
+              ZADANIE NA PONIEDZIALEK:
+              PRZERZUC mENUlIST NA PRAWO, A OBOK NIEGO, CZYLI PRZED NIM, NA LEWO, BO ON NA PRAWO dAYmODE
+              ZROB folder mAINpAGE
 
   
 
