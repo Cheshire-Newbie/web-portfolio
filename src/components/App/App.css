@@ -16,13 +16,6 @@
 
 }
 
-/* .center {
-    width: 50%;
-    height: 50%;
-    background-color: lightgray;
-} */
-
-
 .menu-bar {
     width: 100%;
     height: 8%;
@@ -32,79 +25,12 @@
     transition: all ease-in-out .5s;
 }
 
-.switchButton {
-    position: fixed;
+.menuBarButtons {
+    position: absolute;
+    display: flex;
     top: 10px;
     right: 20px;
+    gap: 10px;
 }
 
-
-
-.hamburger {
-    position: relative;
-    top: 10px;
-    left: 20px;
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-}
-
-.hamburger>span,
-.hamburger>span::after,
-.hamburger>span::before {
-    width: 26px;
-    height: 3px;
-    display: block;
-    position: absolute;
-   
-}
-
-.hamburger>span {
-    top: 18.5px;
-    left: 7px;
-    transition: all ease-in-out .5s;
-}
-
-.hamburger>span::after {
-    top: 10px;
-    content: '';
-    background-color: inherit;
-    transition: top .5s ease-in-out, transform .5s ease-in-out;
-}
-
-.hamburger>span::before {
-    top: -10px;
-    content: '';
-    background-color: inherit;
-    transition: top .5s ease-in-out, transform .5s ease-in-out;
-}
-
-.hamburger.active>span {
-    transform: rotate(135deg);
-}
-
-.hamburger.active>span::after {
-    top: 0px;
-    transform: rotate(90deg);
-}
-
-.hamburger.active>span::before {
-    top: 0px;
-    transform: rotate(0deg);
-}
-
-.opacityMode {
-    opacity: 0;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    border-radius: 100%;
-}
-
-.hamburger:hover>.opacityMode {
-    opacity: 0.2;
-
-}
 

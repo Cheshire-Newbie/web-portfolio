@@ -1,9 +1,11 @@
 import MenuList from "./MenuList/MenuList.vue";
+import Hamburger from "./Hamburger/Hamburger.vue";
 
 export default {
 
     components: {
         MenuList,
+        Hamburger,
     },
 
     name: "App",
@@ -15,7 +17,7 @@ export default {
     }),
 
     methods: {
-        menuStart() {
+        menuStart(e) {
             if (!this.showMenuList) {
                 this.showMenuList = !this.showMenuList;
                 setTimeout(() => {
@@ -31,6 +33,7 @@ export default {
             }
             const hamburgerElement = document.querySelector(".hamburger");
             hamburgerElement.classList.toggle("active");
+            console.log(e)
         },
 
         dayMode() {

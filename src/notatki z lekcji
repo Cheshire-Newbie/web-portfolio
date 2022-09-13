@@ -402,7 +402,17 @@ roadmap
               PRZERZUC mENUlIST NA PRAWO, A OBOK NIEGO, CZYLI PRZED NIM, NA LEWO, BO ON NA PRAWO dAYmODE
               ZROB folder mAINpAGE
 
+
+KOMUNIKACJA DZIECKO-RODZIC 
+
+- dziecko robi funkcje i chce by rodzic go posluchal (czyli dziecko emituje event) 
+- rodzic moze go posluchac i obsluzyc event dziecka - w tym wypadku rodzic nasluchuje eventu (eventlistener)
+- rodzic musi przed gownoburza dziecka zaczac go nasluchiwac 
+(@click jest przykladem eventlistener, gdzie to rodzic jest przygotowany na nasluchiwanie tego, co jest emitowane przez dziecko)
+- kiedy rodzic nasluchuje event dziecka, wybiera tez sposob w jaki ten event obsluzyc (eventhandler) - 
+czyli @click nasluchuje eventu, a @click="eventhandler" przypisuje do danego eventListener funkcje ktora ten event bedzie miala obsluzyc
   
+UWAGA! KIEDY PRZEKAZUJESZ ARGUMENTY DZIECKA W FUNKCJI W RODZICU W NAWIASACH OKRAGLYCH NAZYWASZ JA PO PROSTU "e"
 
 
 
