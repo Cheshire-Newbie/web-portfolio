@@ -1,0 +1,10 @@
+.cat {
+    position: fixed;
+    top: 80px;
+    left: 40px;
+}
+
+.cat>img {
+    height: 200px;
+    width: 200px;
+}
