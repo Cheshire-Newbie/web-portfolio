@@ -140,6 +140,8 @@ this.   = jest to slowo kluczowe ktore pozwala nam odniesc sie do komponentu w k
 $ odnosi sie bezposrednio do wlasciwosci komponentu, a nie do wartosci ktora my ustawilismy
   (this.$vuetify.theme.dark = !this.$vuetify.theme.dark)
   czyli tutaj mowimy calemu kompoentowi, ze jesli nie jest ustawiony tryb dzienny, to ma byc jasny (zmienna logiczna true/false)
+zmienna1 += zmienna2  to jest to samo co zmienna1 = zmienna1+zmienna2
+
 
   new - slowo kluczowe sluzace do stworzenia obeiktu danej klasy
     const router = new VueRouter({
