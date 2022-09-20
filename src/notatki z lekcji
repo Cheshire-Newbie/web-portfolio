@@ -475,3 +475,7 @@ wejdz w terminal cmd
               udalo sie :3
               https://portfolio-barbieri.web.app
 
+              by zdeployowac nowe zmiany:
+              - npm run build
+              - firebase deploy --only hosting
+
