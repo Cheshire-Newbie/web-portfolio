@@ -264,13 +264,6 @@ zmienna.klucz4": to jest moja lista elelentow
 
 obiekt=wartosc w wypadku listy listaLudzi, poniewaz jest zlozona z wielu obiektow
 
-
-
-
-
-
-
-
  <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
@@ -320,7 +313,7 @@ roadmap
       * javascript dla frontend
       * vue/vuex/vuetify
       * moment.js
-    - polaczenie/korzystanie z bazy danych (firestore, podstawy sql)
+    - polaczenie/korzystanie z bazy danych (firestore, podstawy sql, hostowanie strony internetowej w firebase)
       * przechowywanie/dostawanie sie/przepustowosc plikow (glowne pole dla asynchroniczosc)
       * tworzenie baz danych w firestore
     - komunicazia miedzy front/backend (serwery)
@@ -417,6 +410,68 @@ czyli @click nasluchuje eventu, a @click="eventhandler" przypisuje do danego eve
 UWAGA! KIEDY PRZEKAZUJESZ ARGUMENTY DZIECKA W FUNKCJI W RODZICU W NAWIASACH OKRAGLYCH NAZYWASZ JA PO PROSTU "e"
 
 
+porzadek w importach na main (by Bys by bylo wszystko ladnie zrozumiale)
+na poczatku importy z zewnetrznych bibliotek (vue, firebase)
+nastepnie pliki konfiguracyjne (vuetify, router, firebaseConfig)
+na koncu komponenty, albo inne wlasne pliki
 
 
+hostowanie strony internetowej w firebase
+
+wejscie na strone firebase
+go to console
+stworz project
+dodaj app Web
+npm install firebase
+stworz plik konfiguracyjny/klucz do mojego projektu firebase
+dodaj to co oni ci mowia
+              albo lepiej, dodaj do tego projektu samego const firebaseConfig, reszte zakomentuj na razie 
+              (bedzie nam to potrzebne do main.js)
+              pozniej bedzie to wszystko ukryte w gitignore, przez wzglad na to, ze sa to dane poufne i wazne 
+                (tycza sie dostepow, ID, Key etc mojej strony i jakby ktos je mial, moglby mi shakowac i rozpierdolic strone
+                      paietaj wiec by dodac go do gitignore, po prostu wpisujac nazwie file /Firebase-config.js)
+w main.js importuj firebase-config.js
+w main.js importuj import { initializeApp } from "firebase/app";
+wywolaj funkcje z initializeApp ktora wykonuje inicjalizacje firebase uzywajac przekazanego config (firebase-config )
+      initializeApp(firebaseConfig)
+npm install -g firebase-tools
+wejdz w terminal cmd 
+          firebase login
+          firebase init
+                  dodaj firestore i function 
+                  (moglibysmy dodac tez gita by pozniej deployowalo ladnie, ale jest pozno i bys robi inaczej i mogloby to byc trudne)
+          kliknij by uzyc istniejacego projektu (ten co robilismy przed chwila)
+          zazacz go
+                teraz przez wzglad na to, ze nie stworzylismy jeszcze database, da nam blad. wejdz w link ktory zanzacza ci w cmd i stworz database
+                (to sie dzieje dlatego, ze zamiast weijsc w projekt, stworzyc baze danych etc, zabralismy sie od razu za hostowanie. 
+                  Nie jest to grozny blad, mozna zrobic i tak i teraz go stworzyc, 
+                  ale pamietaj na przyszlosc by przed hostowaniem pierw ogarnac baze danych)
+                          Start in production mode
+                          wybierz lokalizacje (europe-central2)
+              kliknij ENTER by pozwolic mu stworzyc swoje pliki systemowe
+                  (github ma problem z tym i nie rozpoznaje naszego projektu, jako ze jest pustu. dodaj jakies testgowno na szybko
+                  {to caly czas majac na uwadze ze hostujemy zanim zabralismy sie za pisanie naszych kodow i rzeczy na firebase, 
+                  ale od razu hostujemy, to dlatego ten blad. dla pewnosci bys mowi by stworzyc luzem tam gdzie rules tez pusty file z nazwa:
+                  firestore.indexes.json})
+              ustaw jezyk programowania (javascript - typescript zrobimy pozniej pozniej)
+              w firebase.json dodaj pole hosting
+                  hosting": {
+                    "public": "dist",
+                    "ignore": [
+                      "firebase.json",
+                      "**/.*",
+                     "**/node_modules/**"
+                    ],
+                    "rewrites": [
+                      {
+                        "source": "**",
+                        "destination": "/index.html"
+                      }
+                    ]
+                  },
+              w terminalu npm run build (potrzebny by skompresowac plik i stworzyc ladny file do wrzucenia na strone)
+              w cmd firebase deploy --only hosting
+
+              udalo sie :3
+              https://portfolio-barbieri.web.app
 
