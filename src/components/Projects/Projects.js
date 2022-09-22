@@ -22,6 +22,8 @@ export default {
 
     methodCat() {
       this.cat = document.querySelector(".cat")
+      //tutaj okreslam ze srodek obrotu kota jest jego prawy gorny rog, a nie jaak bylo przedtem (czyli levy)
+      this.cat.style.transformOrigin = `200 0`;
       this.catIsMoving = !this.catIsMoving;
       if (this.catIsMoving) {
         window.addEventListener("mousemove", this.mouseMoveHandler);
@@ -45,7 +47,7 @@ export default {
 
     moveCat() {
       // tutaj zmienna xDiff i yDiff okreslaja roznice polozenia(odleglosc) miedzy myszka a obiektem cat
-      const xDiff = this.mouseX - this.catX;
+      const xDiff = (this.mouseX-200) - this.catX;
       const yDiff = this.mouseY - this.catY;
       // jesli odleglosc miedzy kotem a myszka jest wieksza niz 10px, to nadaj mu nowa szybkosc, 
       // w przeciwnym razie ustaw jego szybkosc na 0
@@ -64,6 +66,11 @@ export default {
       // tutaj sprawiam ze cat wisualnie przemieszcza sie do swojego nowego polozenia na ekranie
       this.cat.style.left = `${this.catX}px`;
       this.cat.style.top = `${this.catY}px`;
+      //tutaj okreslam kat obrotu (mouse-polozeniekota)
+      const radian = Math.atan2(yDiff, xDiff);
+      //tutaj wprawiamy w ruch obrotowy kota (widzac ze robimy w radianach, zamiast deg
+      //(czym normalnie okreslalismy stopnie w rotate, dajemy rad dla radianow))
+      this.cat.style.transform=`rotate(${radian}rad)`;
       if (this.catIsMoving) {
         // tutaj prosimy okno przegladarki by wykonala ta funkcja w ktorej obecnie sie znajdujemy jeszcze raz,
         //  kiedy bedzie miala kolejna klatka animacji dostepna (zazwyczaj 60x na sec)
@@ -78,6 +85,7 @@ export default {
         this.catYSpeed = 0;
         this.mouseX = 0;
         this.mouseY = 0;
+        this.cat.style.transform = "rotate(0rad)";
       }
     }
   }
