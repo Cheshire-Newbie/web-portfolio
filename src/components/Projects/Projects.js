@@ -25,7 +25,7 @@ export default {
     methodCat() {
       this.cat = document.querySelector(".cat")
       //tutaj okreslam ze srodek obrotu kota jest jego prawy gorny rog, a nie jaak bylo przedtem (czyli levy)
-      this.cat.style.transformOrigin = `100 100`;
+      // this.cat.style.transformOrigin = `100 100`;
       this.catIsMoving = !this.catIsMoving;
       if (this.catIsMoving) {
         window.addEventListener("mousemove", this.mouseMoveHandler);
@@ -49,8 +49,9 @@ export default {
 
     moveCat() {
       // tutaj zmienna xDiff i yDiff okreslaja roznice polozenia(odleglosc) miedzy myszka a obiektem cat
-      const xDiff = (this.mouseX - 200) - this.catX;
-      const yDiff = this.mouseY - this.catY;
+      const xDiff = this.mouseX - (this.catX + 100);
+      const yDiff = this.mouseY - (this.catY + 100
+      );
       // jesli odleglosc miedzy kotem a myszka jest wieksza niz 10px, to nadaj mu nowa szybkosc, 
       // w przeciwnym razie ustaw jego szybkosc na 0
       if (Math.abs(xDiff) > 10) {
@@ -85,7 +86,7 @@ export default {
       }
       //tutaj okreslam przyspieszenie z ktorym sie obraca kot, czyli dziele roznice miedzy katami o 60 
       //(bo tyle jest kratek pokonywanych w ciagu secundy)
-      const rotationAcc = (rotationDiff / 60)*4;
+      const rotationAcc = (rotationDiff / 60) * 10;
 
       // const rotationAcc = (Math.abs(rotationDiff)/rotationDiff)* Math.PI/120;
 
@@ -100,11 +101,17 @@ export default {
       this.catRotation += this.catRotationSpeed;
       //TUTAJ NASTAL KONIEC CHAOSU
 
-      //tutaj wprawiamy w ruch obrotowy kota (widzac ze robimy w radianach, zamiast deg
-      //(czym normalnie okreslalismy stopnie w rotate, dajemy rad dla radianow))
-      //catRotation jest zamiennikiem dla radianu, przez wzglad na wczesniejasza czesc funkcji
-      this.cat.style.transform = `rotate(${this.catRotation}rad)`;
+      if (this.catRotation > 2 * Math.PI) {
+        this.catRotation -= 2 * Math.PI
+      } else if (this.catRotation < -2 * Math.PI) {
+        this.catRotation += 2* Math.PI
+      }
 
+        //tutaj wprawiamy w ruch obrotowy kota (widzac ze robimy w radianach, zamiast deg
+        //(czym normalnie okreslalismy stopnie w rotate, dajemy rad dla radianow))
+        //catRotation jest zamiennikiem dla radianu, przez wzglad na wczesniejasza czesc funkcji
+        this.cat.style.transform = `rotate(${this.catRotation}rad)`;
+      
       if (this.catIsMoving) {
         // tutaj prosimy okno przegladarki by wykonala ta funkcja w ktorej obecnie sie znajdujemy jeszcze raz,
         //  kiedy bedzie miala kolejna klatka animacji dostepna (zazwyczaj 60x na sec)
