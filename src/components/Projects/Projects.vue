@@ -1,6 +1,8 @@
 <template>
 <div class="container">
-  <Cat @emitCat="methodCat"/>
+  <!-- <Cat @emitCat="methodCat"/> -->
+  <Cat/>
+  <GameArcher/>
   <div class="myPersonalText">My projects</div>
 </div>
 </template>

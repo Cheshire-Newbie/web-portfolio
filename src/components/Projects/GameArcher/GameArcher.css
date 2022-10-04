@@ -1,0 +1,29 @@
+.bubuTest {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+}
+
+.flexContainer {
+  gap: 10px;
+  padding: 10px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  flex-direction: row-reverse;
+}
+
+.gameWindow {
+  flex-grow: 3;
+  min-width: 70%;
+  flex-shrink: 1;
+  min-height: 70%;
+
+}
+
+.gameSidebar {
+  flex-grow: 1;
+  min-width: 150px;
+  flex-shrink: 3;
+  min-height: 20%;
+
+}
