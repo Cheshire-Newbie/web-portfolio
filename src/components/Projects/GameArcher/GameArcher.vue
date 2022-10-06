@@ -17,7 +17,30 @@
           color="background"
           class="d-flex flex-grow-1 flexContainer"
         >
-          <v-card color="secondary" class="gameSidebar"></v-card>
+          <v-card color="secondary" class="gameSidebar">
+            <v-form class="flexForm" v-model="valid">
+              <div class="fieldStyle">
+              <div>
+                <v-text-field
+                dense
+                  v-model="nameField"
+                  label="Your name"
+                  :rules="nameRules"
+                  required
+                >
+                </v-text-field>
+              </div>
+              <div>
+                <v-text-field
+                dense
+                v-model="nameField"
+                  label="Your name"
+                  :rules="nameRules"
+                  required></v-text-field>
+              </div>
+              </div>
+            </v-form>
+          </v-card>
           <v-card color="secondary" class="gameWindow"></v-card>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">

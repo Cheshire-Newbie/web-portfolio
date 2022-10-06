@@ -40,11 +40,11 @@ export default {
       // this.cat.style.transformOrigin = `100 100`;
       this.catIsMoving = !this.catIsMoving;
       if (this.catIsMoving) {
-        window.addEventListener("mousemove", this.mouseMoveHandler);
+        window.addEventListener("pointermove", this.mouseMoveHandler);
         this.moveCat();
       }
       else {
-        window.removeEventListener("mousemove", this.mouseMoveHandler);
+        window.removeEventListener("pointermove", this.mouseMoveHandler);
         this.cat.style.left = `40px`;
         this.cat.style.top = `80px`;
       }

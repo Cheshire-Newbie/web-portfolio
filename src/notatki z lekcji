@@ -141,6 +141,36 @@ $ odnosi sie bezposrednio do wlasciwosci komponentu, a nie do wartosci ktora my 
   (this.$vuetify.theme.dark = !this.$vuetify.theme.dark)
   czyli tutaj mowimy calemu kompoentowi, ze jesli nie jest ustawiony tryb dzienny, to ma byc jasny (zmienna logiczna true/false)
 zmienna1 += zmienna2  to jest to samo co zmienna1 = zmienna1+zmienna2
+|| operator logiczny "or"
+&& operator logiczny "and"
+
+WYTLUMACZENIE FUNKCJI W DOKUMENTACJI V-FORM
+          v => !!v || 'Name is required'
+  funkcja stralkowa anononimowa, ktora okresla dla wartosci "v", ze ma zwrocic
+  wartosc logiczna true/false. Jesli jest false, to wtedy wykonuje sie druga czesc
+  funkcji po "or" 
+  (!! oznaczaja dwa nastepujace po sobie zaprzeczenia, w tym przypadku:
+  v = puste/false
+  !v = true
+  !!v = false
+  !!!v = true)
+  w tej funkcji po "or" mamy stringa, dlatego ze js jesli jest "boolean||string"
+  i boolean jest false, to wtedy "wyrzuca" samego stringa, jesli jest true, to drugiej 
+  czesci wyrazenia logicznego nie wykonuje
+
+          v => /.+@.+/.test(v) || 'E-mail must be valid',   
+  tutaj mamy przyklad wykorzystania REGEX'A czyli sprawdzamy w naszej funkcji czy 
+  string "v" spelnia warunek, jak nie to wyswietla stringa po "or"
+  regex dziala na stringach
+  (tutaj tlumaczenie regexa'a ktory nastepuje wewnatrz //)
+     . oznacza nastepujacy znak poprzedzony jest dowolnym znakiem
+     + oznacza ze poprzednie wyrazenie powtorzone jest dowolna liczba razy
+     @ to malpa
+  ten regex sprawdza wylacznie czy wewnatrz maila mamy znaki z malpa i kolejnymi znakami
+  marta@ jest false
+  @marta jest false
+  marta@marta jest ok
+
 
 
   new - slowo kluczowe sluzace do stworzenia obeiktu danej klasy

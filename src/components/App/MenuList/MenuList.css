@@ -1,5 +1,6 @@
 .menuList {
     width: 10%;
+    min-width: fit-content;
     height: 92%;
     top: 8%;
     right: 0px;
