@@ -22,34 +22,53 @@
 
 .gameSidebar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
   flex-grow: 1;
   min-width: 150px;
   flex-shrink: 3;
+  flex-basis: 0;
   min-height: 20%;
-  background-color: rgba(100, 100, 100, 1);
-  padding: 0px;
+  padding: 5px;
   margin: 0px;
+  gap: 5px;
 }
 
 .flexForm {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  background-color: rgba(250, 100, 100, 0.5);
-}
-
-.fieldStyle {
-  display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
-  height: 100%;
-  background-color: rgba(100, 250, 100, 0.5);
+  border: 1px solid #424242;
+  padding: 5px;
+  border-radius: 10px;
 }
 
-.fieldStyle>div {
- width: 120px;
- margin: 10px;
- height: 100px;
- background-color: rgba(100, 100, 250, 0.5);
+.flexForm>div {
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 150px;
+  min-width: 50px;
+  max-width: 100%;
+}
+
+.flexForm>div:has(button) {
+  display: flex;
+  justify-content: center;
+}
+
+.iconDiv {
+  display: flex;
+  justify-items: space-around;
+  justify-content: space-around;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid #424242;
+  padding: 5px;
+  border-radius: 10px;
 }

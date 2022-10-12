@@ -19,10 +19,9 @@
         >
           <v-card color="secondary" class="gameSidebar">
             <v-form class="flexForm" v-model="valid">
-              <div class="fieldStyle">
               <div>
                 <v-text-field
-                dense
+                  dense
                   v-model="nameField"
                   label="Your name"
                   :rules="nameRules"
@@ -32,14 +31,24 @@
               </div>
               <div>
                 <v-text-field
-                dense
-                v-model="nameField"
-                  label="Your name"
-                  :rules="nameRules"
-                  required></v-text-field>
+                  dense
+                  v-model="passwordField"
+                  label="Your password"
+                  :rules="passRules"
+                  :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                  :type="show1 ? 'text' : 'password'"
+                  @click:append="show1 = !show1"
+                  required
+                ></v-text-field>
               </div>
+              <div style="width: 100%">
+                <v-btn depressed color="secondaryAccent">SAVE</v-btn>
               </div>
             </v-form>
+            <div class="iconDiv">
+              <v-icon x-large>mdi-pause-circle-outline</v-icon>
+              <v-icon x-large>mdi-play-circle-outline</v-icon>
+            </div>
           </v-card>
           <v-card color="secondary" class="gameWindow"></v-card>
         </v-card>

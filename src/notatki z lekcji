@@ -509,3 +509,39 @@ wejdz w terminal cmd
               - npm run build
               - firebase deploy --only hosting
 
+              
+              CSSOWY SLOWNICZEK by ZBYS 
+
+                  ALIGN-ITEMS    mowi nam o tym, w jaki sposob zawartosc kontenera zachowuje sie wewnatrz wiersza w ktorym itemy sie znajduja
+                                 (W PIONIE)
+                                 flex tworzy kolejne wiersze, jesli szerokosc itemow znajdujacych sie wewnatrz niego jest wieksza niz jego szerokosc
+                                 i FLEX-WRAP ustawiony jest na WRAP 
+                                 wartosc STRETCH sprawi, ze item bedzie mial pelna wyszokosc wiersza 
+                                 START sprawi ze item bedzie mial swoja wlasna wysokosc, ale ustawi sie na samej gorze wiersza
+                                 CENTER rowniez zachowa wysokosc itema, ale umiesci go dokladnie na srodku wiersza w ktorym sie znajduje
+                                 wiersze sa tworzone w taki sposob, by itemy wewnatrz nich mialy dokladnie tyle samo miejsca 
+                                 (dlatego strechuja sie do tego samego rozmiaru, jak i przy start i end pozostawione jest duzo miejsca, jakby byly w osobnych "divach")
+
+                  ALIGN-CONTENT  mowi nam o roztawieniu wierszy wewnatrz flexa 
+                                 domyslna wartosc (NORMAL) rozdziela po rowno wysokosc rodzica miedzy wszystkie potrzebne do sworzenia wiesze 
+                                 START sprawia ze wysokosc wierszy zalezna jest od rozmiaru contentu wewnatrz nich i ustawia wszystkie wiersze jak najblizej gory rodzica
+                                 CENTER rowniez zachowuje wysokosc wierszy zalezna od wysokosci itemow znajdujacych sie wewnatrz nich 
+                                 i ustawia wszystkie wiersze jak najblizej srodka rodzica
+
+                  !!! ALIGN-CONTENT I ALIGN-ITEMS czesto daja pozadany efekt kiedy dzialaja w kombinacji ze soba !!!
+
+                  FLEX-BASIS     ustawia domyslna szerokosc itemu do ktorej on dazy. Jesli flex-grow i flex-shrink sa ustawione i maja wartosc inna niz 0, to znaczy 
+                                 ze item moze probowac zmieniac swoja szerokosc w znaleznosci od rozmiaru rodzica, oraz wartosci flexow
+                                 szerokosc do ktorej domyslnie item bedzie w takej sytuacji probowal dazyc jest wpisana wlasnie w flex-basis 
+
+                  FLEX-GROW      ustawiany jest na itemie i mowi o tym jaka ma byc jego proporcja szerokosci wzgledem pozostalych itemow znajdujach sie w wierszu
+                                 jesli wszystkie itemy maja ustawione to sama wartosc FLEX-GROW to wszystkie zachowuja idnakowe proporcje, ale jesli ktorys item mial 
+                                 flex-grow 3, to wtedy ten item bedzie 3 razy wiekszy niz pozostale
+
+                  FLEX-SHRINK    dziala bardzo podobnie jak FLEX-GROW, ale mowi nam o tym jakie maja byc proporcje itemow w wypadku gdy musza sie one skurczyc
+                                 jesli wszystkie maja wartosc 1, ale jesli ktorys z nich ma wartosc FLEX-SHRINK3, to kurczy sie 3 razy szybciej niz pozostale
+
+                  FLEX-WRAP      mowi nam o tym, czy flex wewnatrz ktorego jest ustawiony ma prawo stworzyc wiecej niz jeden wiersz, jesli laczna szerokosc itemow jest 
+                                 szersza niz szerokosc rodzica (FLEX-WRAP: WRAP)
+
+
