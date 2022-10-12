@@ -1,3 +1,5 @@
+import { doc, setDoc, getDoc } from "firebase/firestore";
+
 export default {
     name: "GameArcher",
 
@@ -7,6 +9,7 @@ export default {
         nameField: "",
         passwordField: "",
         show1: false,
+        loadingSaveUser: false,
 
         nameRules: [
             (nameValue) => {
@@ -35,7 +38,20 @@ export default {
 
     methods: {
 
-    
+        async saveUser() {
+            this.loadingSaveUser = true
+            const docRef = doc(this.$db, "users", this.nameField)
+            const userDocument = await getDoc(docRef)
+            if (!userDocument.exists()) {
+                await setDoc(docRef, {
+                    name: this.nameField,
+                    password: this.passwordField
+                })
+            }
+            else window.alert("uzytkownik o takiej nazwie juz istnieje")
+            this.loadingSaveUser = false
+        }
+
     }
 
 

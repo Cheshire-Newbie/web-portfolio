@@ -42,7 +42,9 @@
                 ></v-text-field>
               </div>
               <div style="width: 100%">
-                <v-btn depressed color="secondaryAccent">SAVE</v-btn>
+                <v-btn depressed color="secondaryAccent" :disabled="!valid" @click="saveUser" :loading="loadingSaveUser"
+                  >SAVE</v-btn
+                >
               </div>
             </v-form>
             <div class="iconDiv">

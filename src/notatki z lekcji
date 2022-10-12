@@ -545,3 +545,8 @@ wejdz w terminal cmd
                                  szersza niz szerokosc rodzica (FLEX-WRAP: WRAP)
 
 
+promise
+
+async - slowo kluczowe wpisywane przed funkcjami i metodami, zeby sprawic by byly ASYNCHRONICZNE.
+                  - pozwala czekac na wykonanie promisa (przy pomocy slowa kluczowego AWAIT)
+                  - sama z siebie metoda zwraca promisa (ktory bedzie rozwiazywal sie do wartosci zwroconej normalnie z funkcji)
