@@ -41,9 +41,17 @@
                   required
                 ></v-text-field>
               </div>
-              <div style="width: 100%">
-                <v-btn depressed color="secondaryAccent" :disabled="!valid" @click="saveUser" :loading="loadingSaveUser"
+              <div style="width: 100%; gap: 10px">
+                <v-btn
+                  depressed
+                  color="secondaryAccent"
+                  :disabled="!valid"
+                  @click="saveUser"
+                  :loading="loadingSaveUser"
                   >SAVE</v-btn
+                >
+                <v-btn depressed color="secondaryAccent" @click="loginUser"
+                  >LOGIN</v-btn
                 >
               </div>
             </v-form>
@@ -57,6 +65,21 @@
         <v-card-actions class="d-flex justify-end align-center">
           <v-btn @click="showDialog = false">Exit</v-btn>
         </v-card-actions>
+        <v-alert
+          class="alert"
+          shaped
+          dark
+          :color="alertColor"
+          v-model="showAlert"
+          @click="
+            () => {
+              if (currentAlertResolve) currentAlertResolve();
+            }
+          "
+          transition="slide-x-reverse-transition"
+        >
+          {{ alertText }}
+        </v-alert>
       </v-card>
     </v-dialog>
   </div>

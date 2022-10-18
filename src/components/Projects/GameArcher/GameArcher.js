@@ -10,6 +10,11 @@ export default {
         passwordField: "",
         show1: false,
         loadingSaveUser: false,
+        currentAlertResolve: null,
+
+        alertColor: "info",
+        showAlert: false,
+        alertText: "",
 
         nameRules: [
             (nameValue) => {
@@ -42,17 +47,57 @@ export default {
             this.loadingSaveUser = true
             const docRef = doc(this.$db, "users", this.nameField)
             const userDocument = await getDoc(docRef)
+            // to potrzebne do wyswietlania obiektow z bazy danych
+            // console.log(userDocument.data().name)
+            //zrob okno wyskakujace z info ze jestes zalogowany, plus przycisk dla logowania
             if (!userDocument.exists()) {
                 await setDoc(docRef, {
                     name: this.nameField,
                     password: this.passwordField
                 })
+                this.displayAlert("success", `Witaj ${this.nameField}! Zarejestrowal*s sie poprawnie!`)
             }
-            else window.alert("uzytkownik o takiej nazwie juz istnieje")
+            else this.displayAlert("warning", "uzytkownik o takiej nazwie juz istnieje")
             this.loadingSaveUser = false
+        },
+
+        async loginUser() {
+            const docRef = doc(this.$db, "users", this.nameField)
+            const userDocument = await getDoc(docRef)
+            if (userDocument.data() && userDocument.data().password === this.passwordField) {
+                this.displayAlert("success", `Hello gamer ${userDocument.data().name}!`)
+            }
+            else if (!userDocument.data()) {
+                this.displayAlert("info", "You must register before starting the game.")
+            }
+            else if (userDocument.data().password !== this.passwordField) {
+                this.displayAlert("error", "You password is not correct.")
+            }
+        },
+
+        displayAlert(color, text) {
+            if (this.currentAlertResolve) this.currentAlertResolve()
+            this.alertColor = color;
+            this.alertText = text;
+            this.showAlert = true;
+            let alertClosed = false;
+            let alertResolve
+            let alertPromise = new Promise((resolve) => {
+                alertResolve = resolve;
+                this.currentAlertResolve = alertResolve;
+                setTimeout(() => {
+                    if (!alertClosed) {
+                        alertClosed = true;
+                        alertResolve()
+                    }
+                }, 5000);
+            })
+
+            alertPromise.then(() => {
+                this.showAlert = false;
+                alertClosed = true;
+                this.currentAlertResolve = null
+            })
         }
-
     }
-
-
-};
+}

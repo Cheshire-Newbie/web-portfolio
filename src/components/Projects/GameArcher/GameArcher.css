@@ -1,3 +1,21 @@
+.alert {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40%;
+  max-height: 80px;
+  text-align: center;  
+}
+
+.v-sheet.v-alert.v-sheet--shaped {
+  border-radius: 24px 4px 4px 24px;
+}
+
+.v-card > *:last-child:not(.v-btn):not(.v-chip):not(.v-avatar).v-sheet--shaped {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 24px;
+}
+
 .bubuTest {
   position: fixed;
   top: 80px;
