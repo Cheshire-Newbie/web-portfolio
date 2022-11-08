@@ -15,7 +15,7 @@
         <v-card tile color="background" class="containerSorting">
             <v-btn depressed color="secondaryAccent" @click="Randomise">Randomise</v-btn>
             {{unsortedArray}}
-          <v-btn depressed color="secondaryAccent" @click="Sort">Sort</v-btn>
+          <v-btn depressed color="secondaryAccent" @click="SortZbysiowy">Sort</v-btn>
           {{sortedArray}}
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
