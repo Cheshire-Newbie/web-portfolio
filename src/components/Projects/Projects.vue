@@ -1,10 +1,9 @@
 <template>
-<div class="container">
-  <!-- <Cat @emitCat="methodCat"/> -->
-  <Cat/>
-  <GameArcher/>
-  <div class="myPersonalText">My projects</div>
-</div>
+  <div class="projects">
+    <div class="myPersonalText">My projects</div>
+    <ProjectOverview v-for="(project, index) of projects" :key="'project'+index"
+    :presentationProject="project.component"/>
+  </div>
 </template>
 
 <script src="./Projects.js"/>

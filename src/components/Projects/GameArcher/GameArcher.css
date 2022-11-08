@@ -16,12 +16,6 @@
   border-bottom-right-radius: 24px;
 }
 
-.bubuTest {
-  position: fixed;
-  top: 80px;
-  right: 40px;
-}
-
 .flexContainer {
   gap: 10px;
   padding: 10px;

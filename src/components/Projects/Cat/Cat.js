@@ -4,6 +4,7 @@ export default {
   name: "Cat",
   data: () => ({
 
+    showDialog: false,
     catSurprise: obrazek2,
     isButton: true,
     catIsMoving: false,
@@ -130,8 +131,8 @@ export default {
         window.requestAnimationFrame(this.moveCat);
       }
       else {
-        this.cat.style.left = `40px`;
-        this.cat.style.top = `80px`;
+        this.cat.style.left = `45%`;
+        this.cat.style.top = `50%`;
         this.catX = 40;
         this.catY = 80;
         this.catXSpeed = 0;

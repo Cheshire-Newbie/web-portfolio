@@ -1,14 +1,14 @@
 .menuList {
+    display: flex;
     width: 10%;
     min-width: fit-content;
     height: 92%;
-    top: 8%;
     right: 0px;
     position: absolute;
+    z-index: 9999;
     /* border: 1px solid black; */
     /* sluzy do zawijania tekstu wewnatrz swojego diva */
     /* /* overflow-wrap: break-word; */
-
 }
 
 .menuList>div {
@@ -18,6 +18,22 @@
 
 .menuList.active>div {
     opacity: 1;
+}
+
+.iconHome {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.languageBar {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 10px;
+
 }
 
 .linkText {

@@ -1,5 +1,5 @@
 <template>
-  <div class="bubuTest">
+  <div>
     <v-btn depressed color="secondaryAccent" @click="showDialog = true"
       >No! Click me!</v-btn
     >

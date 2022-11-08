@@ -10,19 +10,13 @@
         width="100%"
         height="100%"
       >
-        <v-card-title>Rotate cat</v-card-title>
-        <v-card-text>opis </v-card-text>
-        <v-card
-          tile
-          color="background"
-          class="catContainer"
-        >
-          <div class="cat" @click="methodCat">
-            <v-btn depressed color="secondaryAccent" v-if="isButton"
-              >Click me!</v-btn
-            >
-            <img v-else :src="catSurprise" />
-          </div>
+        <v-card-title>Sorting</v-card-title>
+        <v-card-text>opis sortingu</v-card-text>
+        <v-card tile color="background" class="containerSorting">
+            <v-btn depressed color="secondaryAccent" @click="Randomise">Randomise</v-btn>
+            {{unsortedArray}}
+          <v-btn depressed color="secondaryAccent" @click="Sort">Sort</v-btn>
+          {{sortedArray}}
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
           <v-btn @click="showDialog = false">Exit</v-btn>
@@ -32,5 +26,5 @@
   </div>
 </template>
 
-<script src="./Cat.js"/>
-<style src="./Cat.css"/>
+<script src="./Sorting.js"/>
+<style src="./Sorting.css"/>

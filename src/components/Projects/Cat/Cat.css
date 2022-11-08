@@ -1,7 +1,12 @@
+.catContainer {
+    display: flex;
+    height: 92%;
+}
+
 .cat {
     position: fixed;
-    top: 80px;
-    left: 40px;
+    top: 50%;
+    left: 45%;
 }
 
 .cat>img {

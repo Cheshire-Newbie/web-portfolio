@@ -1,8 +1,6 @@
-.container {
-    height: 92%;
+.projects {
+    min-height: 92%;
     width: 100%;
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 20px;
   }
+

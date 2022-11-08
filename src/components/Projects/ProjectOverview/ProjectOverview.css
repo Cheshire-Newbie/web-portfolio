@@ -1,0 +1,62 @@
+.project {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 40%;
+  background-color: var(--v-primary-base);
+}
+
+.preview {
+  flex-grow: 1;
+  flex-shrink: 2;
+  flex-basis: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--v-primary-darken1);
+}
+
+.preview>img {
+  aspect-ratio: 1 / 1;
+  max-width: 70%;
+  max-height: 90%;
+  border-radius: 100%;
+}
+
+.gradient {
+  width: 5%;
+  background: linear-gradient(to right, var(--v-primary-darken1), var(--v-primary-base));
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  flex-grow: 2;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+.description {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.actions {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0%;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
