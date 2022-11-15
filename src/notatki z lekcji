@@ -143,6 +143,11 @@ $ odnosi sie bezposrednio do wlasciwosci komponentu, a nie do wartosci ktora my 
 zmienna1 += zmienna2  to jest to samo co zmienna1 = zmienna1+zmienna2
 || operator logiczny "or"
 && operator logiczny "and"
+... operator rozbicia(destrukturyzowania) tablicy, badz obiektu. 
+                    let tmpArray = [...this.unsortedArray]
+                trzykropek tutaj sprawia, ze kopiujemy dana lista, a nie ze przepisujemy ja dokladnie (wycuiaga wszystkie wartosci osobno z arraya)
+    jest jeszcze uzyteczny by polaczyc ze soba dwa array [...unsortedArray, ...sortedArray]
+
 
 WYTLUMACZENIE FUNKCJI W DOKUMENTACJI V-FORM
           v => !!v || 'Name is required'

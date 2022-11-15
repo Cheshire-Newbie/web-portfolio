@@ -1,6 +1,7 @@
 .catContainer {
     display: flex;
     height: 92%;
+    touch-action: none;
 }
 
 .cat {

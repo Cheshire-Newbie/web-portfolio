@@ -17,7 +17,7 @@ export default {
     }),
 
     methods: {
-        menuStart(e) {
+        menuStart() {
             if (!this.showMenuList) {
                 this.showMenuList = !this.showMenuList;
                 setTimeout(() => {
@@ -33,7 +33,6 @@ export default {
             }
             const hamburgerElement = document.querySelector(".hamburger");
             hamburgerElement.classList.toggle("active");
-            console.log(e)
         },
 
         dayMode() {

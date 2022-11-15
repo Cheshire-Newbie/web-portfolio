@@ -2,7 +2,7 @@
     display: flex;
     width: 10%;
     min-width: fit-content;
-    height: 92%;
+    height: 100%;
     right: 0px;
     position: absolute;
     z-index: 9999;

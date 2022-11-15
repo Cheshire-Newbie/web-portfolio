@@ -13,10 +13,37 @@
         <v-card-title>Sorting</v-card-title>
         <v-card-text>opis sortingu</v-card-text>
         <v-card tile color="background" class="containerSorting">
-            <v-btn depressed color="secondaryAccent" @click="Randomise">Randomise</v-btn>
-            {{unsortedArray}}
-          <v-btn depressed color="secondaryAccent" @click="SortZbysiowy">Sort</v-btn>
-          {{sortedArray}}
+          <div>
+            <v-btn depressed color="secondaryAccent" @click="Randomise" :disabled="randomiseRunning" :loading="randomiseRunning"
+              >Randomise</v-btn
+            >
+            <!-- <div>{{ unsortedArray }}</div> -->
+              <transition-group name="columns" class="graph" tag="div">
+              <div
+                v-for="(number, index) of unsortedArray"
+                :key="'unsorted' + index"
+                class="column"
+                :style="
+                  'height: ' + 100 * (number / dlugosc) + '%;' +
+                  'width: ' + 90 * ( 1 / dlugosc) + '%;'
+                "
+              ></div>
+              </transition-group>
+            </div>
+          <div>
+            <v-btn depressed color="secondaryAccent" @click="Sort">Sort</v-btn>
+             <!-- <div>{{ sortedArray }}</div> -->
+              <transition-group name="columns" class="graph" tag="div">
+              <div
+                v-for="(number, index) of sortedArray"
+                :key="'sorted' + index"
+                class="column"
+                :style="
+                'height: ' + 100 * (number / dlugosc) + '%;' +
+                  'width: ' + 90 * ( 1 / dlugosc) + '%;'"
+              ></div>
+              </transition-group>
+          </div>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
           <v-btn @click="showDialog = false">Exit</v-btn>

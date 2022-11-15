@@ -41,23 +41,21 @@ export default {
       // this.cat.style.transformOrigin = `100 100`;
       this.catIsMoving = !this.catIsMoving;
       if (this.catIsMoving) {
-        window.addEventListener("pointermove", this.mouseMoveHandler);
+        document.body.addEventListener("pointermove", this.mouseMoveHandler);
         this.moveCat();
       }
       else {
-        window.removeEventListener("pointermove", this.mouseMoveHandler);
+        document.body.removeEventListener("pointermove", this.mouseMoveHandler);
         this.cat.style.left = `40px`;
         this.cat.style.top = `80px`;
       }
     },
 
     mouseMoveHandler(e) {
-      // const catElement = document.querySelector(".cat");
-      // catElement.style.left = `${e.clientX}px`;
-      // catElement.style.top = `${e.clientY}px`;
+      e.preventDefault()
       // tutaj zmienne mouseX i mouseY sledza ruch myszki
-      this.mouseX = e.clientX;
-      this.mouseY = e.clientY;
+      this.mouseX = e.pageX;
+      this.mouseY = e.pageY;
     },
 
     moveCat() {

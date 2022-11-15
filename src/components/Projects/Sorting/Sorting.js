@@ -5,46 +5,64 @@ export default {
         unsortedArray: [],
         sortedArray: [],
         dlugosc: 10,
+        randomiseRunning: false,
     }),
 
     methods: {
 
-        Randomise() {
-            this.unsortedArray = this.getRandomArray(this.dlugosc)
-            this.sortedArray = []
-        },
-
-        Sort() {
-            let i
-            let p = this.dlugosc
-            // jesli dlugosc listy jest wieksza od 0, to....
-            if (this.unsortedArray.length > 0) {
-                for (let index in this.unsortedArray) {
-                    // to nadaje naszej zmiennej number wartosc poprzez wykorzystanie wartosci danego indexu listy
-                    let number = this.unsortedArray[index]
-                    if (p > number) {
-                        // jesli p jest wieksze od number, to wtedy nadpisujemy nowe p i zapisujemy sobie index
-                        p = number
-                        i = index
-                    }
-                }
-                // zapisz wartosc w nowej liscie 
-                this.sortedArray.push(p)
-                // skasuj ze starej listy
-                this.unsortedArray.splice(i, 1)
-                // wykonaj metode jeszcze raz
-                this.Sort()
-            }
-        },
-
-        SortZbysiowy() {
-            let i
-            let p = this.dlugosc
-            // jesli dlugosc listy jest wieksza od 0, to....
+        async Randomise() {
+            // ustawiam wartosc zmiennej na true, by disabled przycisk
+            this.randomiseRunning = true
+            // tworze promisa, ktorego celem jest odliczanie czasu dodawania nowych elementow (kazdy pojawia sie w 50ms, ale my bierzemy 100 jako margines bledu i mnoze ich przez 
+            // dlugosc listy unsorted +1, a na koniec dodaje czas trwania tranzycji [secunda = 1000 ms])
+            const popPromise = new Promise((resolve) => {
+                setTimeout(resolve, (100 * (this.unsortedArray.length+1) + 1000))
+            })
+            // jesli dlugosc unsortedarray jest wieksza niz 0 to usuwamy ostatni element z listy, czejakac by to zrobic okreslony czas w new Promise
             while (this.unsortedArray.length > 0) {
-                for (let index in this.unsortedArray) {
+                this.unsortedArray.pop()
+                await new Promise((resolve) => {
+                    setTimeout(resolve, 50)
+                })
+            }
+            // jesli dlugosc sortedarray jest wieksza niz 0 to usuwamy ostatni element z listy, czejakac by to zrobic okreslony czas w new Promise
+            while (this.sortedArray.length > 0) {
+                this.sortedArray.pop()
+                await new Promise((resolve) => {
+                    setTimeout(resolve, 50)
+                })
+            }
+            // czekamy na wykonanie promisa popPromise
+            await popPromise
+            // do tmpArray jest przypisana tablica losowych liczb o okrlesnonej przez zmienna dlugosc dlugosci
+            let tmpArray = this.getRandomArray(this.dlugosc)
+            // tworze promisa, ktorego celem jest odliczanie czasu dodawania nowych elementow (kazdy pojawia sie w 50ms, wiec mnoze ich przez ich 
+            // ilosc i dodaje czas trwania tranzycji [secunda = 1000 ms])
+            const pushPromise = new Promise((resolve) => {
+                setTimeout(resolve, (50 * (this.dlugosc+1) + 1000))
+            })
+
+            for (let number of tmpArray) {
+                this.unsortedArray.push(number)
+                await new Promise((resolve) => {
+                    setTimeout(resolve, 50)
+                })
+            }
+            await pushPromise
+            console.log((50 * (this.dlugosc+1) + 1000))
+            this.randomiseRunning = false
+        },
+
+        async Sort() {
+            this.sortedArray = []
+            let i
+            let p = this.dlugosc
+            let tmpArray = [...this.unsortedArray]
+            // jesli dlugosc listy jest wieksza od 0, to....
+            while (tmpArray.length > 0) {
+                for (let index in tmpArray) {
                     // to nadaje naszej zmiennej number wartosc poprzez wykorzystanie wartosci danego indexu listy
-                    let number = this.unsortedArray[index]
+                    let number = tmpArray[index]
                     if (p > number) {
                         // jesli p jest wieksze od number, to wtedy nadpisujemy nowe p i zapisujemy sobie index
                         p = number
@@ -53,8 +71,11 @@ export default {
                 }
                 // zapisz wartosc w nowej liscie 
                 this.sortedArray.push(p)
+                await new Promise((resolve) => {
+                    setTimeout(resolve, 50)
+                })
                 // skasuj ze starej listy
-                this.unsortedArray.splice(i, 1)
+                tmpArray.splice(i, 1)
                 p = this.dlugosc
             }
         },
@@ -62,5 +83,7 @@ export default {
         getRandomArray(dlugosc) {
             return Array.from({ length: dlugosc }, () => Math.floor(Math.random() * dlugosc))
         }
+
+
     }
 };
