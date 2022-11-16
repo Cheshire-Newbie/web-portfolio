@@ -21,6 +21,15 @@
     transition: all ease-in-out .5s;
 }
 
+.iconHome {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
 .menuBarButtons {
     position: absolute;
     display: flex;

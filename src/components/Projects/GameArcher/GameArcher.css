@@ -2,9 +2,11 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 40%;
-  max-height: 80px;
+  width: 50%;
+  max-height: 100%;
+  max-width: 100%;
   text-align: center;  
+  flex-wrap: wrap;
 }
 
 .v-sheet.v-alert.v-sheet--shaped {
@@ -57,7 +59,7 @@
   gap: 10px;
   width: 100%;
   border: 1px solid #424242;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
 }
 

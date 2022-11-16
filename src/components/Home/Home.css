@@ -1,8 +1,27 @@
 .container {
     height: 92%;
     width: 100%;
-   
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3%;
+  }
+
+  .foot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .languageBar {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 10px;
+}

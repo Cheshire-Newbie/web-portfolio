@@ -2,6 +2,20 @@
   display: flex;
   height: 92%;
   gap: 10px;
+  justify-content: space-between;
+}
+
+.oneSortDiv {
+  display: flex;
+  padding: 2%;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 5%;
+  height: inherit;
+  width: 50%;
 }
 
 .graph {
@@ -27,11 +41,11 @@
 
 .columns-move,
 .columns-enter-active,
-.columns-leave-active{
+.columns-leave-active {
   transition: all 1s ease;
 }
 
-.columns-leave-to{
+.columns-leave-to {
   opacity: 0;
   max-height: 0%;
 }

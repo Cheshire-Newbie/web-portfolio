@@ -13,36 +13,50 @@
         <v-card-title>Sorting</v-card-title>
         <v-card-text>opis sortingu</v-card-text>
         <v-card tile color="background" class="containerSorting">
-          <div>
-            <v-btn depressed color="secondaryAccent" @click="Randomise" :disabled="randomiseRunning" :loading="randomiseRunning"
+          <div class="oneSortDiv">
+            <v-btn
+              depressed
+              color="secondaryAccent"
+              @click="Randomise"
+              :disabled="randomiseRunning"
+              :loading="randomiseRunning"
               >Randomise</v-btn
             >
             <!-- <div>{{ unsortedArray }}</div> -->
-              <transition-group name="columns" class="graph" tag="div">
+            <transition-group name="columns" class="graph" tag="div">
               <div
                 v-for="(number, index) of unsortedArray"
                 :key="'unsorted' + index"
                 class="column"
                 :style="
-                  'height: ' + 100 * (number / dlugosc) + '%;' +
-                  'width: ' + 90 * ( 1 / dlugosc) + '%;'
+                  'height: ' +
+                  100 * (number / dlugosc) +
+                  '%;' +
+                  'width: ' +
+                  90 * (1 / dlugosc) +
+                  '%;'
                 "
               ></div>
-              </transition-group>
-            </div>
-          <div>
+            </transition-group>
+          </div>
+          <div class="oneSortDiv">
             <v-btn depressed color="secondaryAccent" @click="Sort">Sort</v-btn>
-             <!-- <div>{{ sortedArray }}</div> -->
-              <transition-group name="columns" class="graph" tag="div">
+            <!-- <div>{{ sortedArray }}</div> -->
+            <transition-group name="columns" class="graph" tag="div">
               <div
                 v-for="(number, index) of sortedArray"
                 :key="'sorted' + index"
                 class="column"
                 :style="
-                'height: ' + 100 * (number / dlugosc) + '%;' +
-                  'width: ' + 90 * ( 1 / dlugosc) + '%;'"
+                  'height: ' +
+                  100 * (number / dlugosc) +
+                  '%;' +
+                  'width: ' +
+                  90 * (1 / dlugosc) +
+                  '%;'
+                "
               ></div>
-              </transition-group>
+            </transition-group>
           </div>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">

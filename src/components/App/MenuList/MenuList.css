@@ -20,21 +20,8 @@
     opacity: 1;
 }
 
-.iconHome {
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-}
 
-.languageBar {
-    display: flex;
-    margin-bottom: 10px;
-    gap: 10px;
 
-}
 
 .linkText {
     width: 100%;
