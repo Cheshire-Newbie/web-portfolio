@@ -8,11 +8,11 @@
         color="primary"
         class="d-flex flex-column"
         width="100%"
-        height="100%"
+        min-height="100%"
       >
         <v-card-title>Sorting</v-card-title>
         <v-card-text>opis sortingu</v-card-text>
-        <v-card tile color="background" class="containerSorting">
+        <v-card tile color="background" class="containerSorting" width="100%">
           <div class="oneSortDiv">
             <v-btn
               depressed
@@ -36,7 +36,7 @@
                   90 * (1 / dlugosc) +
                   '%;'
                 "
-              ></div>
+              ><div class="numberClass">{{number}}</div></div>
             </transition-group>
           </div>
           <div class="oneSortDiv">
@@ -55,12 +55,12 @@
                   90 * (1 / dlugosc) +
                   '%;'
                 "
-              ></div>
+              ><div class="numberClass">{{number}}</div></div>
             </transition-group>
           </div>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
-          <v-btn @click="showDialog = false">Exit</v-btn>
+          <v-btn @click="showDialog = false" color="secondaryAccent">Exit</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
