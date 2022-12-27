@@ -346,42 +346,52 @@ roadmap
     - nauka jezyka angielskiego bez niecheci (ze zezwolonymi lzami rozpaczy i agonii)
     - tworzenie frontend (html css javascript)
       * javascript dla frontend
-      * vue/vuex/vuetify
-      * moment.js
-    - polaczenie/korzystanie z bazy danych (firestore, podstawy sql, hostowanie strony internetowej w firebase)
-      * przechowywanie/dostawanie sie/przepustowosc plikow (glowne pole dla asynchroniczosc)
+      * vue/vuex/vuetify !!!! brakuje vuex
+      * moment.js !!!!(jesli znajdziemy praktyczne zastosowanie)
+    - polaczenie/korzystanie z bazy danych (firestore, podstawy sql, hostowanie strony internetowej w firebase) !!!! sql
+      * przechowywanie/dostawanie sie plikow (glowne pole dla asynchroniczosc)
       * tworzenie baz danych w firestore
     - komunicazia miedzy front/backend (serwery)
-      * Node.js
-      * uslugi googlecloud (google-cloud-functions, app engine, pubsub, google storage, )
-      * express (rest api)
+      * Node.js !!!!
+      * uslugi googlecloud (google-cloud-functions, app engine, pubsub, google storage, ) !!!!!
+      * express (rest api) !!!!!!
     - hostowanie strony (firebase)
-      * kupowanie domen
+      * kupowanie domen !!!!!!
 
   biblioteki i frameworki:
-    - scss/sass
-    - react/redux (to samo cu vuex dla vue)
-    - vite
-    - electron (np visual studio code, discord)
-    - react-native (jesli bedziemy mieli czas na zabawe z app na tel)
+    - scss/sass !!!
+    - react/redux (to samo cu vuex dla vue) !!!!
+    - vite !!!!!
+    - electron (np visual studio code, discord) !!!!
+    - react-native (jesli bedziemy mieli czas na zabawe z app na tel) ????
   
   proces developmentu:
     - ci/cd (continous integration/ continous development)
     - scrum/agile (pobieznie - filozofia pracy nowoczesnych programistow)
 
   jezyki programowania:
-    - javascript
-    - typescript
+    - javascript !!!!
+    - typescript ????
     - podstawy pythona
 
   projekty (kolejnosc ustanowiona przez Zbysia):
-    1. portfolio (ono bedzie rozwijane w kolejne projekty, jako moja strona "do presentacji")
+    <!-- 1. portfolio (ono bedzie rozwijane w kolejne projekty, jako moja strona "do presentacji") -->
     2. procesowanie jsonow/xml
-    3. ?
-    4. ?
+    3. slownik
+    <!-- 4. sortowanie -->
     5. gra multiplayer kierowana wzrokiem (ping-pong kierowany wzrokiem)  
-    6. gra przegladarkowa (responsywna, by byla widoczna na telefonie)
+    <!-- 6. gra przegladarkowa (responsywna, by byla widoczna na telefonie) -->
     7. strona do sesji
+
+
+    plan nastepujacy:
+    do konca grudnia minigierka + SLOWNICZEK
+    styczen biblioteki i frameworki
+    luty
+    * typescrypt
+    * sql
+    * + lindekin i cv
+    jak bede pracowac w miedzyczasie python
 
 
     tworzenie reposytorium github

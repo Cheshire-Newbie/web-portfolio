@@ -2,12 +2,16 @@
     display: flex;
     height: 92%;
     touch-action: none;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-image: url("../../../assets/3042.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .cat {
     position: fixed;
-    top: 50%;
-    left: 45%;
 }
 
 .cat>img {

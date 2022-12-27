@@ -34,6 +34,13 @@
 
 }
 
+.boar {
+  width: 192px;
+  height: 192px;
+  background: url(../../../assets/boar.png);
+  background-color: black;
+}
+
 .gameSidebar {
   display: flex;
   flex-wrap: wrap;

@@ -17,6 +17,7 @@
           color="background"
           class="catContainer"
         >
+        <!-- <img src="@/assets/3042.jpg"/> -->
           <div class="cat" @click="methodCat">
             <v-btn depressed color="secondaryAccent" v-if="isButton"
               >Click me!</v-btn

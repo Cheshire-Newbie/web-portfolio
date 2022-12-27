@@ -11,7 +11,7 @@
         height="100%"
       >
         <v-card-title>Archer Game</v-card-title>
-        <v-card-text>To jest gra, gdzie ubijasz krolicza rasa </v-card-text>
+        <v-card-text>To jest gra, gdzie ubijasz dzicza rasa </v-card-text>
         <v-card
           tile
           color="background"
@@ -60,7 +60,14 @@
               <v-icon x-large>mdi-play-circle-outline</v-icon>
             </div>
           </v-card>
-          <v-card color="secondary" class="gameWindow"></v-card>
+          <v-card color="secondary" class="gameWindow">
+            <div class="boar"></div>
+            <v-btn @click="boar.state=0">stanie</v-btn>
+            <v-btn @click="boar.state=1">prychanie</v-btn>
+            <v-btn @click="boar.state=2">bieg</v-btn>
+            <v-btn @click="boar.state=3">smierc</v-btn>
+            <v-btn @click="boar.state=4">reset</v-btn>
+          </v-card>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
           <v-btn @click="showDialog = false">Exit</v-btn>

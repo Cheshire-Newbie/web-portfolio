@@ -11,10 +11,23 @@ export default {
         show1: false,
         loadingSaveUser: false,
         currentAlertResolve: null,
-
         alertColor: "info",
         showAlert: false,
         alertText: "",
+        boar: {
+            div: null,
+            width: 192,
+            height: 192,
+            spriteWidth: 960,
+            spriteHeight: 576,
+            currentX: 0,
+            currentY: 0,
+            state: 4,
+            framesCount: 3,
+            frame: 0,
+            states: [],
+        },
+
 
         nameRules: [
             (nameValue) => {
@@ -40,6 +53,11 @@ export default {
 
         ]
     }),
+
+    mounted() {
+        this.boar.states = this.initializeStates(this.boar)
+        this.gameAnimation()
+    },
 
     methods: {
 
@@ -98,6 +116,39 @@ export default {
                 alertClosed = true;
                 this.currentAlertResolve = null
             })
+        },
+
+        initializeStates(imgObj) {
+            let x = 0
+            let y = 0
+            let frames = []
+            let states = []
+            //tak dlugo, az x NIE(to nasz wykrzyknik poczatkowy) bedzie max x a y NIE bedzie max y, powtarzaj, a jak warunek bedzie spelniony, zakoncz
+            while (y !== imgObj.spriteHeight) {
+                if (frames.length === imgObj.framesCount) {
+                    states.push(frames)
+                    frames = []
+                }
+                frames.push(`${-x}px ${-y}px`)
+                x += imgObj.width
+                if (x === imgObj.spriteWidth) {
+                    x = 0
+                    y += imgObj.height
+                }
+            }
+            states.push(frames)
+            return states
+        },
+
+        gameAnimation() {
+            if (this.boar.div) {
+                let frame = this.boar.states[this.boar.state][this.boar.frame]
+                this.boar.div.style.backgroundPosition = frame
+                this.boar.frame = (this.boar.frame + 1) % this.boar.framesCount
+            } else this.boar.div = document.querySelector(".boar")
+            setTimeout(() => {
+                window.requestAnimationFrame(this.gameAnimation)
+            }, 200);
         }
     }
 }
