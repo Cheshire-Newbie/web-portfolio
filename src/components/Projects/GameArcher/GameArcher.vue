@@ -62,11 +62,20 @@
           </v-card>
           <v-card color="secondary" class="gameWindow">
             <div class="boar"></div>
-            <v-btn @click="boar.state=0">stanie</v-btn>
-            <v-btn @click="boar.state=1">prychanie</v-btn>
-            <v-btn @click="boar.state=2">bieg</v-btn>
-            <v-btn @click="boar.state=3">smierc</v-btn>
-            <v-btn @click="boar.state=4">reset</v-btn>
+            <div 
+            class="bush"
+            v-for="(position, index) of positions.filter(p => p.top)"
+            :key="`bush` + index"
+            :style="`top: calc(${position.top} - 192px); left: ${position.left}`">
+            </div>
+
+            <!-- komentarz do click = jak wywolujesz wydarzenie to wlacz odpowiedni state dzika i kazdorazowo zeruj index klatek (frame) -->
+            <!-- wszystkie przyciski zakomentowane bo nam do chuja niepotrzebne tutaj, beda w credits 
+            <v-btn @click="boar.state=0, boar.frame=0">stanie</v-btn>
+            <v-btn @click="boar.state=1, boar.frame=0">prychanie</v-btn>
+            <v-btn @click="boar.state=2, boar.frame=0">bieg</v-btn>
+            <v-btn @click="boar.state=3, boar.frame=0">smierc</v-btn>
+            <v-btn @click="boar.state=4, boar.frame=0">reset</v-btn> -->
           </v-card>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">

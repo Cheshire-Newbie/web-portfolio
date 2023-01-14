@@ -31,14 +31,32 @@
   min-width: 70%;
   flex-shrink: 1;
   min-height: 70%;
+  position: relative;
 
 }
 
 .boar {
+  top: calc(100% - 192px);
+  left: calc(100% - 192px);
   width: 192px;
   height: 192px;
   background: url(../../../assets/boar.png);
-  background-color: black;
+  position: absolute;
+  transition: top 2s, left 2s;
+}
+
+.boarRotate {
+  transform: rotateY(180deg);
+}
+
+.bush {
+  top: calc(100% - 192px);
+  left: calc(100% - 192px);
+  width: 192px;
+  height: 192px;
+  background: url(../../../assets/krzak.png);
+  position: absolute;
+  transform:scale(0.70)
 }
 
 .gameSidebar {

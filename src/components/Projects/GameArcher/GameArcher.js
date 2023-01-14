@@ -14,6 +14,9 @@ export default {
         alertColor: "info",
         showAlert: false,
         alertText: "",
+        positions: [
+            { top: "80%", left: "10%" }, { top: "50%", left: "80%" }, { top: "25%", left: "30%" }, { top: null, left: null }
+        ],
         boar: {
             div: null,
             width: 192,
@@ -22,7 +25,7 @@ export default {
             spriteHeight: 576,
             currentX: 0,
             currentY: 0,
-            state: 4,
+            state: 0,
             framesCount: 3,
             frame: 0,
             states: [],
@@ -57,6 +60,7 @@ export default {
     mounted() {
         this.boar.states = this.initializeStates(this.boar)
         this.gameAnimation()
+        this.boarGo(0)
     },
 
     methods: {
@@ -136,16 +140,76 @@ export default {
                     y += imgObj.height
                 }
             }
+            //ponowne puszowanie poza whilem frames do state wynika z tego, ze frames zawsze sa pushowane po rozpoczeciu kolejnego state
+            //nie rozpoczynajac 4 state, ktory w dziku jest ostatnimi 3 pustymi kratkami, wyskakuje blad i ich nie rozpoznaje
             states.push(frames)
             return states
         },
 
-        gameAnimation() {
+        animateBoar() {
             if (this.boar.div) {
-                let frame = this.boar.states[this.boar.state][this.boar.frame]
+                //do zmiennej FRAME przypisujemy element, ktory wyszukujemy w nastepujacy sposob:
+                //z listy states ktora znajduje sie wewnatrz boar poprzez wykorzystanie wartosci zmiennej state by okreslic konkretny punkt w tej liscie (state jest naszym indexem)
+                //this.boar.states[this.boar.state]
+                //ten element w states nazywa Frames
+                //i by okreslic konkretna wartosc w liscie frames ktora jest lista wewnatrz states, wykorzystujemy wartosc zmiennej frame (ktora jest indeksem)
+                //    imgObj  lista     zmienna wykorzystana jako index dla states      zmienna wykorzystana jako index dla frames(lista wewnatrz states)
+                //  this.boar.states         [this.boar.state]                                                [this.boar.frame]
+                let frames = this.boar.states[this.boar.state]   //do zmiennej frames przypisujemy element listy states o indexie this.boar.state
+                let frame = frames[this.boar.frame]             //do zmiennej frame przypisujemy element listy frames o indexie this.boar.frame
+                //do okreslonej w frame pozycji dostawiamy konkretny fragment obrazka w background
                 this.boar.div.style.backgroundPosition = frame
-                this.boar.frame = (this.boar.frame + 1) % this.boar.framesCount
+                //jesli nie ma smierci dzika i smierc dzika sie nie skonczyla to rob to co zawsze
+                if (!(this.boar.state === 3 && this.boar.frame === (this.boar.framesCount - 1))) {
+                    //do pola frame, ktore jest indexem dla listy frames okreslajaca pozycje, przypisujemy nastepujace rownanie:
+                    //reszta z dzielenia obecnego index +1 (czyli kolejny index) / przez dlugosc listy (czyli ilementow w sobie zawiera) frames (jesli sa 3 elementy, to lista jest dlugo 3)
+                    //modulo jest uzyteczne przy wyliczaniu sekwencji liczby ktora ma sie liczyc w mieskonczonosc, ale ktora ma powracac w momencie konca cyklu do swojego poczatku 
+                    this.boar.frame = (this.boar.frame + 1) % frames.length
+                }
+                // do this.boar.div przypisujemy elelemt html o klasie (.) boar
             } else this.boar.div = document.querySelector(".boar")
+        },
+
+        boarGo(position) {
+            if (this.boar.div) {
+                this.boar.state = 2
+                this.boar.frame = 0
+                let top = this.positions[position].top
+                let left = this.positions[position].left
+                if (top) {
+                    this.boar.div.style.top = `calc(${top} - ${this.boar.height}px)`
+                    this.boar.div.style.left = left
+                } else {
+                    this.boar.div.style.top = null
+                    this.boar.div.style.left = null
+                    this.boar.div.style.opacity = 0
+                }
+                let newPosition = (position + 1) % this.positions.length
+                setTimeout(() => {
+                    this.boar.div.style.opacity = 1
+                    this.boar.state = 0
+                    this.boar.frame = 0
+                }, 2000);
+                setTimeout(() => {
+                    this.boarGo(newPosition)
+                }, 6000);
+                setTimeout(() => {
+                    this.boar.state = 1
+                    this.boar.frame = 0
+                }, 4000);
+            } else setTimeout(() =>
+                this.boarGo(position), 6000)
+            //nadanie obrotu przy zmianiepozycji
+            let boarRot = document.querySelector(".boar")
+            if (position !== 0 && boarRot) {
+                boarRot.classList.toggle("boarRotate")
+            } else if (boarRot) {
+                boarRot.classList.remove("boarRotate")
+            }
+        },
+
+        gameAnimation() {
+            this.animateBoar()
             setTimeout(() => {
                 window.requestAnimationFrame(this.gameAnimation)
             }, 200);
