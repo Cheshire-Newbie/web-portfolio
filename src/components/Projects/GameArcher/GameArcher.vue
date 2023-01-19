@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-btn depressed color="secondaryAccent" @click="showDialog = true"
-      >No! Click me!</v-btn
+      >TRY IT LIVE</v-btn
     >
     <v-dialog fullscreen v-model="showDialog">
       <v-card

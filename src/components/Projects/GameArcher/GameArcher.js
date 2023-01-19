@@ -30,6 +30,7 @@ export default {
             frame: 0,
             states: [],
         },
+        bush: document.querySelector(".bush"),
 
 
         nameRules: [
@@ -205,6 +206,20 @@ export default {
                 boarRot.classList.toggle("boarRotate")
             } else if (boarRot) {
                 boarRot.classList.remove("boarRotate")
+            }
+        },
+
+        bushPosition(position) {
+            if (this.bush) {
+                let top = this.positions[position].top
+                let left = this.positions[position].left
+                if (top) {
+                    this.bush.style.top = `calc(${top} - ${left}px)`
+                    this.bush.style.left = left
+                } else {
+                    this.bush.style.top = null
+                    this.bush.style.left = null
+                }
             }
         },
 

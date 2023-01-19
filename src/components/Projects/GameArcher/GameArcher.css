@@ -36,8 +36,6 @@
 }
 
 .boar {
-  top: calc(100% - 192px);
-  left: calc(100% - 192px);
   width: 192px;
   height: 192px;
   background: url(../../../assets/boar.png);
@@ -50,13 +48,11 @@
 }
 
 .bush {
-  top: calc(100% - 192px);
-  left: calc(100% - 192px);
   width: 192px;
-  height: 192px;
-  background: url(../../../assets/krzak.png);
+  height: 102px;
+  background: url(../../../assets/krzak4.png);
   position: absolute;
-  transform:scale(0.70)
+  transform: scale(0.7);
 }
 
 .gameSidebar {

@@ -17,6 +17,14 @@ export default {
     mouseY: 0,
     catRotation: 0,
     catRotationSpeed: 0,
+    icon: [
+      "mdi-language-html5", "mdi-language-css3", "mdi-language-javascript"
+    ],
+    title: "Cat Chasing Cursor",
+    technologies: "Built using HTML, CSS, JS",
+    description: "Creating an object with an image assigned to its CSS class, which reacts to mouse movement in a given field and, through a javascript function, determining the rotational movement, its speed and frequency, rotates it in accordance with the direction of movement.",
+    image: require("@/assets/catanteprime.png"),
+    githubSrc: "",
 
   }),
 
