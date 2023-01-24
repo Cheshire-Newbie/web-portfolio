@@ -4,3 +4,7 @@
     padding-top: 20px;
   }
 
+.numberValue {
+  width: 50%;
+  display: flex;
+}

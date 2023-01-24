@@ -4,8 +4,16 @@ export default {
         showDialog: false,
         unsortedArray: [],
         sortedArray: [],
-        dlugosc: 10,
+        dlugosc: null,
         randomiseRunning: false,
+        icon: [
+            "mdi-language-html5", "mdi-language-css3", "mdi-language-javascript"
+          ],
+          title: "Sorting",
+          technologies: "Built using HTML, CSS, JS",
+          description: "Neatly animated implementation of selection sorting algorithm. Sorted data is random assortment of integers between 0 and chosen value.",
+          image: require("@/assets/sortanteprime.png"),
+          githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/Sorting",
     }),
 
     methods: {

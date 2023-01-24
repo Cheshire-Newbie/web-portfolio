@@ -60,7 +60,7 @@
               <v-icon x-large>mdi-play-circle-outline</v-icon>
             </div>
           </v-card>
-          <v-card color="secondary" class="gameWindow">
+          <v-card color="#004700" class="gameWindow">
             <div class="boar"></div>
             <div 
             class="bush"

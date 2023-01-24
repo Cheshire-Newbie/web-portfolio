@@ -17,6 +17,7 @@ export default {
         positions: [
             { top: "80%", left: "10%" }, { top: "50%", left: "80%" }, { top: "25%", left: "30%" }, { top: null, left: null }
         ],
+        bush: document.querySelector(".bush"),
         boar: {
             div: null,
             width: 192,
@@ -30,7 +31,14 @@ export default {
             frame: 0,
             states: [],
         },
-        bush: document.querySelector(".bush"),
+        icon: [
+            "mdi-language-html5", "mdi-language-css3", "mdi-language-javascript"
+          ],
+          title: "",
+          technologies: "Built using HTML, CSS, JS",
+          description: "",
+          image: require("@/assets/boaranteprime.png"),
+          githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/GameArcher",
 
 
         nameRules: [

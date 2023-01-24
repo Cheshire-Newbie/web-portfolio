@@ -11,7 +11,17 @@
         min-height="100%"
       >
         <v-card-title>Sorting</v-card-title>
-        <v-card-text>opis sortingu</v-card-text>
+        <div class="numberValue">
+        <v-text-field
+          v-model="dlugosc"
+          label="Please enter a value"
+          outlined
+          clearable
+          hide-details
+          sigle-line
+          width="50%"
+        />
+        </div>
         <v-card tile color="background" class="containerSorting" width="100%">
           <div class="oneSortDiv">
             <v-btn
@@ -36,7 +46,9 @@
                   90 * (1 / dlugosc) +
                   '%;'
                 "
-              ><div class="numberClass">{{number}}</div></div>
+              >
+                <div class="numberClass">{{ number }}</div>
+              </div>
             </transition-group>
           </div>
           <div class="oneSortDiv">
@@ -55,12 +67,16 @@
                   90 * (1 / dlugosc) +
                   '%;'
                 "
-              ><div class="numberClass">{{number}}</div></div>
+              >
+                <div class="numberClass">{{ number }}</div>
+              </div>
             </transition-group>
           </div>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
-          <v-btn @click="showDialog = false" color="secondaryAccent">Exit</v-btn>
+          <v-btn @click="showDialog = false" color="secondaryAccent"
+            >Exit</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>

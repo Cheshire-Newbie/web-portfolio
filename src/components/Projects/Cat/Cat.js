@@ -24,7 +24,7 @@ export default {
     technologies: "Built using HTML, CSS, JS",
     description: "Creating an object with an image assigned to its CSS class, which reacts to mouse movement in a given field and, through a javascript function, determining the rotational movement, its speed and frequency, rotates it in accordance with the direction of movement.",
     image: require("@/assets/catanteprime.png"),
-    githubSrc: "",
+    githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/Cat",
 
   }),
 

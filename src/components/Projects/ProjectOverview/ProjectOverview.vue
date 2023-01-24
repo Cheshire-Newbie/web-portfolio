@@ -34,7 +34,11 @@
       <div class="actions">
         <!-- to jest przycisk od komponentow -->
         <component :is="presentationProject" />
-        <v-btn depressed color="secondaryAccent"
+        <v-btn
+          depressed
+          color="secondaryAccent"
+          :href="presentationProject.data().githubSrc"
+          target="_blank"
           ><v-icon>mdi-source-repository</v-icon>Source</v-btn
         >
       </div>
