@@ -33,12 +33,12 @@ export default {
         },
         icon: [
             "mdi-language-html5", "mdi-language-css3", "mdi-language-javascript"
-          ],
-          title: "",
-          technologies: "Built using HTML, CSS, JS",
-          description: "",
-          image: require("@/assets/boaranteprime.png"),
-          githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/GameArcher",
+        ],
+        title: "",
+        technologies: "Built using HTML, CSS, JS",
+        description: "",
+        image: require("@/assets/boaranteprime.png"),
+        githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/GameArcher",
 
 
         nameRules: [
@@ -181,6 +181,11 @@ export default {
 
         boarGo(position) {
             if (this.boar.div) {
+                if (position !== 0 && position !== this.positions.length - 1) {
+                    this.boar.div.classList.toggle("boarRotate")
+                } else
+                    this.boar.div.classList.remove("boarRotate")
+
                 this.boar.state = 2
                 this.boar.frame = 0
                 let top = this.positions[position].top
@@ -208,28 +213,19 @@ export default {
                 }, 4000);
             } else setTimeout(() =>
                 this.boarGo(position), 6000)
-            //nadanie obrotu przy zmianiepozycji
-            let boarRot = document.querySelector(".boar")
-            if (position !== 0 && boarRot) {
-                boarRot.classList.toggle("boarRotate")
-            } else if (boarRot) {
-                boarRot.classList.remove("boarRotate")
-            }
+            //nadanie obrotu przy zmianie pozycji
         },
-
-        bushPosition(position) {
-            if (this.bush) {
-                let top = this.positions[position].top
-                let left = this.positions[position].left
-                if (top) {
-                    this.bush.style.top = `calc(${top} - ${left}px)`
-                    this.bush.style.left = left
-                } else {
-                    this.bush.style.top = null
-                    this.bush.style.left = null
-                }
-            }
-        },
+        // funkcja niepotrzebna, bo robie v-forem
+        // bushPosition(position) {
+        //     if (this.bush) {
+        //         let top = this.positions[position].top
+        //         let left = this.positions[position].left
+        //         if (top) {
+        //             this.bush.style.top = `calc(${top} - ${left}px)`
+        //             this.bush.style.left = left
+        //         } 
+        //     }
+        // },
 
         gameAnimation() {
             this.animateBoar()

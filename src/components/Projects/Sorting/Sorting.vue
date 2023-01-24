@@ -11,17 +11,19 @@
         min-height="100%"
       >
         <v-card-title>Sorting</v-card-title>
-        <div class="numberValue">
+        <v-card width="20%" min-width="200px" class="ma-3 mt-0">
         <v-text-field
           v-model="dlugosc"
           label="Please enter a value"
+          color="black"
+          background-color="secondaryAccent"
           outlined
           clearable
           hide-details
           sigle-line
-          width="50%"
+          dense
         />
-        </div>
+        </v-card>
         <v-card tile color="background" class="containerSorting" width="100%">
           <div class="oneSortDiv">
             <v-btn

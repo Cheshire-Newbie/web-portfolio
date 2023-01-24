@@ -66,7 +66,7 @@
             class="bush"
             v-for="(position, index) of positions.filter(p => p.top)"
             :key="`bush` + index"
-            :style="`top: calc(${position.top} - 192px); left: ${position.left}`">
+            :style="`top: calc(${position.top} - 180px); left: ${position.left}`">
             </div>
 
             <!-- komentarz do click = jak wywolujesz wydarzenie to wlacz odpowiedni state dzika i kazdorazowo zeruj index klatek (frame) -->

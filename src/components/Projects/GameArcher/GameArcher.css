@@ -5,7 +5,7 @@
   width: 50%;
   max-height: 100%;
   max-width: 100%;
-  text-align: center;  
+  text-align: center;
   flex-wrap: wrap;
 }
 
@@ -13,7 +13,7 @@
   border-radius: 24px 4px 4px 24px;
 }
 
-.v-card > *:last-child:not(.v-btn):not(.v-chip):not(.v-avatar).v-sheet--shaped {
+.v-card>*:last-child:not(.v-btn):not(.v-chip):not(.v-avatar).v-sheet--shaped {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 24px;
 }
@@ -41,6 +41,8 @@
   background: url(../../../assets/boar.png);
   position: absolute;
   transition: top 2s, left 2s;
+  top: 80%;
+  left: 80%;
 }
 
 .boarRotate {
