@@ -12,6 +12,8 @@
 
 .cat {
     position: fixed;
+    justify-content: center;
+    align-items: center;
 }
 
 .cat>img {

@@ -6,14 +6,16 @@ export default {
         sortedArray: [],
         dlugosc: null,
         randomiseRunning: false,
+        sortRunning: false,
+        disabledBtn: false,
         icon: [
             "mdi-language-html5", "mdi-language-css3", "mdi-language-javascript"
-          ],
-          title: "Sorting",
-          technologies: "Built using HTML, CSS, JS",
-          description: "Neatly animated implementation of selection sorting algorithm. Sorted data is random assortment of integers between 0 and chosen value.",
-          image: require("@/assets/sortanteprime.png"),
-          githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/Sorting",
+        ],
+        title: "Sorting",
+        technologies: "Built using HTML, CSS, JS",
+        description: "Neatly animated implementation of selection sorting algorithm. Sorted data is random assortment of integers between 0 and chosen value.",
+        image: require("@/assets/sortanteprime.png"),
+        githubSrc: "https://github.com/Cheshire-Newbie/web-portfolio/tree/main/src/components/Projects/Sorting",
     }),
 
     methods: {
@@ -24,7 +26,7 @@ export default {
             // tworze promisa, ktorego celem jest odliczanie czasu dodawania nowych elementow (kazdy pojawia sie w 50ms, ale my bierzemy 100 jako margines bledu i mnoze ich przez 
             // dlugosc listy unsorted +1, a na koniec dodaje czas trwania tranzycji [secunda = 1000 ms])
             const popPromise = new Promise((resolve) => {
-                setTimeout(resolve, (100 * (this.unsortedArray.length+1) + 1000))
+                setTimeout(resolve, (100 * (this.unsortedArray.length + 1) + 1000))
             })
             // jesli dlugosc unsortedarray jest wieksza niz 0 to usuwamy ostatni element z listy, czejakac by to zrobic okreslony czas w new Promise
             while (this.unsortedArray.length > 0) {
@@ -47,7 +49,7 @@ export default {
             // tworze promisa, ktorego celem jest odliczanie czasu dodawania nowych elementow (kazdy pojawia sie w 50ms, wiec mnoze ich przez ich 
             // ilosc i dodaje czas trwania tranzycji [secunda = 1000 ms])
             const pushPromise = new Promise((resolve) => {
-                setTimeout(resolve, (50 * (this.dlugosc+1) + 1000))
+                setTimeout(resolve, (50 * (this.dlugosc + 1) + 1000))
             })
 
             for (let number of tmpArray) {
@@ -56,12 +58,15 @@ export default {
                     setTimeout(resolve, 50)
                 })
             }
-            await pushPromise
-            console.log((50 * (this.dlugosc+1) + 1000))
             this.randomiseRunning = false
+            this.disabledBtn = true
+            await pushPromise
+            // console.log((50 * (this.dlugosc+1) + 1000))
+
         },
 
         async Sort() {
+            this.sortRunning = true
             this.sortedArray = []
             let i
             let p = this.dlugosc
@@ -86,6 +91,8 @@ export default {
                 tmpArray.splice(i, 1)
                 p = this.dlugosc
             }
+            this.sortRunning = false
+            this.disabledBtn = false
         },
 
         getRandomArray(dlugosc) {

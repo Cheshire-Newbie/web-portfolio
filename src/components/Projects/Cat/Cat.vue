@@ -10,8 +10,8 @@
         width="100%"
         height="100%"
       >
-        <v-card-title>Rotate cat</v-card-title>
-        <v-card-text>opis </v-card-text>
+        <v-card-title>{{title}}</v-card-title>
+        <v-card-text>{{description}}</v-card-text>
         <v-card
           tile
           color="background"

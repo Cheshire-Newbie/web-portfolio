@@ -18,22 +18,21 @@
     border-bottom: 1px solid #424242;
     /* sluzy do ustawiania brzegu diva
     border: 1px solid black; */
-    transition: all ease-in-out .5s;
+    transition: all ease-in-out 0.5s;
 }
 
 .iconHome {
     display: flex;
     flex-direction: column;
-    margin-top: auto;
-    gap: 15px;
-    justify-content: center;
+    gap: 10px;
+    right: 20px;
     align-items: center;
 }
 
 .menuBarButtons {
     position: absolute;
     display: flex;
-    top: 10px;
+    align-items: center;
     right: 20px;
     gap: 10px;
 }

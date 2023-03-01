@@ -10,19 +10,20 @@
         width="100%"
         min-height="100%"
       >
-        <v-card-title>Sorting</v-card-title>
-        <v-card width="20%" min-width="200px" class="ma-3 mt-0">
-        <v-text-field
-          v-model="dlugosc"
-          label="Please enter a value"
-          color="black"
-          background-color="secondaryAccent"
-          outlined
-          clearable
-          hide-details
-          sigle-line
-          dense
-        />
+        <v-card-title>{{title}}</v-card-title>
+          <v-card-text>{{description}}</v-card-text>
+        <v-card width="50%" min-width="200px" class="ma-3 mt-0">
+          <v-text-field
+            v-model="dlugosc"
+            label="Please enter a value for the sort number"
+            color="black"
+            background-color="secondaryAccent"
+            outlined
+            clearable
+            hide-details
+            sigle-line
+            dense
+          />
         </v-card>
         <v-card tile color="background" class="containerSorting" width="100%">
           <div class="oneSortDiv">
@@ -30,7 +31,7 @@
               depressed
               color="secondaryAccent"
               @click="Randomise"
-              :disabled="randomiseRunning"
+              :disabled="disabledBtn"
               :loading="randomiseRunning"
               >Randomise</v-btn
             >
@@ -54,7 +55,13 @@
             </transition-group>
           </div>
           <div class="oneSortDiv">
-            <v-btn depressed color="secondaryAccent" @click="Sort">Sort</v-btn>
+            <v-btn
+              depressed
+              color="secondaryAccent"
+              @click="Sort"
+              :loading="sortRunning"
+              >Sort</v-btn
+            >
             <!-- <div>{{ sortedArray }}</div> -->
             <transition-group name="columns" class="graph" tag="div">
               <div

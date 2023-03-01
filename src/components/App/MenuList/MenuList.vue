@@ -1,5 +1,5 @@
 <template>
-  <v-expand-x-transition>
+  <v-slide-x-reverse-transition>
     <div class="menuList secondary" v-if="show">
       <div class="linkText secondaryAccent tertiary--text">
         <v-btn depressed color="secondaryAccent" to="/about_me" @click="$emit('close')">About me</v-btn>
@@ -9,7 +9,7 @@
         
       </div>
     </div>
-  </v-expand-x-transition>
+  </v-slide-x-reverse-transition>
 </template>
 
 <script src="./MenuList.js"/>
