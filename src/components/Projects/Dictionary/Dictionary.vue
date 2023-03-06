@@ -39,11 +39,17 @@
               >
             </div>
             <div class="answerField">
-              <div class="definition" v-if="showDefinition">{{definition}}</div>
-              <div class="example" v-if="showExample">{{example}}</div>
+              <div class="definition" v-if="showDefinition">
+                {{ definition }}
+              </div>
+              <div class="example" v-if="showExample">{{ example }}</div>
             </div>
           </v-card>
-          <div class="indexDictionary"></div>
+          <div class="indexDictionary">
+            <div v-for="(indexTerm) of terms" :key="indexTerm.term">
+              {{term}}
+            </div>
+          </div>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
           <v-btn @click="showDialog = false" color="secondaryAccent"
@@ -82,9 +88,7 @@
             </div>
             <div class="btnField">
               <v-card-actions>
-                <v-btn color="secondaryAccent" @click="saveTerm"
-                  >Save</v-btn
-                >
+                <v-btn color="secondaryAccent" @click="saveTerm">Save</v-btn>
                 <v-btn @click="addDictionary = false" color="secondaryAccent"
                   >Exit</v-btn
                 >
