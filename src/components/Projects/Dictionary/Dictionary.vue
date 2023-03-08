@@ -17,7 +17,7 @@
             <div class="textField">
               <v-card width="50%" min-width="200px" class="ma-3 mt-0">
                 <v-text-field
-                  v-model="term"
+                  v-model="selectedTerm.term"
                   label="Enter the term you seek!"
                   color="black"
                   background-color="secondaryAccent"
@@ -39,16 +39,17 @@
               >
             </div>
             <div class="answerField">
-              <div class="definition" v-if="showDefinition">
-                {{ definition }}
+              <div class="definition" v-if='selectedTerm.definition!==""'>
+                {{ selectedTerm.definition }}
               </div>
-              <div class="example" v-if="showExample">{{ example }}</div>
+              <!-- jeśli jest zaznaczony jakiś termin i nie ma on pustego pola wpisanego w definition i/lub w example, to pokaż definition i/lub example -->
+              <div class="example" v-if='selectedTerm.definition!==""'>{{ selectedTerm.example }}</div>
             </div>
           </v-card>
           <div class="indexDictionary">
-            <div v-for="(indexTerm) of terms" :key="indexTerm.term">
-              {{term}}
-            </div>
+            <v-card @click="selectedTerm = indexTerm" v-for="(indexTerm) of terms" :key="indexTerm.term">
+              {{indexTerm.term}}
+            </v-card>
           </div>
         </v-card>
         <v-card-actions class="d-flex justify-end align-center">
@@ -62,7 +63,7 @@
           <v-card color="primary" height="60vh" class="d-flex flex-column">
             <div class="answerField">
               <v-text-field
-                v-model="term"
+                v-model="selectedTerm.term"
                 clearable
                 no-resize
                 color="black"
@@ -70,7 +71,7 @@
                 class="term"
               ></v-text-field>
               <v-textarea
-                v-model="definition"
+                v-model="selectedTerm.definition"
                 clearable
                 no-resize
                 color="black"
@@ -78,7 +79,7 @@
                 class="definition"
               ></v-textarea>
               <v-textarea
-                v-model="example"
+                v-model="selectedTerm.example"
                 clearable
                 no-resize
                 color="black"

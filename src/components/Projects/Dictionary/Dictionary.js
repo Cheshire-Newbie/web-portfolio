@@ -8,12 +8,12 @@ export default {
 
         showDialog: false,
         addDictionary: false,
-        term: "",
-        definition: "",
-        example: "",
-        showDefinition: false,
-        showExample: false,
         terms: [],
+        selectedTerm : {
+            term: "",
+            definition: "",
+            example: ""
+          },
 
         icon: [
             "mdi-language-html5", "mdi-language-css3", "mdi-language-javascript"
@@ -34,34 +34,32 @@ export default {
 
         reviewIndex() {
             const indexListener = onSnapshot(collection(this.$db, 'dictionary'), (querySnapshot) => {
-                this.terms = querySnapshot.docs.map(doc => doc.data().term)
+                this.terms = querySnapshot.docs.map(doc => doc.data())
+                console.log(this.terms)
             })
             addEventListener('beforeunload', indexListener)
-            console.log(this.terms)
         },
 
         async checkTerm() {
-            const docRef = doc(this.$db, "dictionary", this.term)
+            const docRef = doc(this.$db, "dictionary", this.selectedTerm.term)
             const dictionaryDocument = await getDoc(docRef)
-            console.log(this.term)
             if (dictionaryDocument.exists()) {
-                this.showDefinition = true
-                this.showExample = true
-                this.definition = dictionaryDocument.data().definition
-                this.example = dictionaryDocument.data().example
+                this.selectedTerm.definition = dictionaryDocument.data().definition
+                this.selectedTerm.example = dictionaryDocument.data().example
             }
         },
 
         async saveTerm() {
-            const docRef = doc(this.$db, "dictionary", this.term)
+            const docRef = doc(this.$db, "dictionary", this.selectedTerm.term)
             const dictionaryDocument = await getDoc(docRef)
             if (!dictionaryDocument.exists()) {
                 await setDoc(docRef, {
-                    term: this.term,
-                    definition: this.definition,
-                    example: this.example
+                    term: this.selectedTerm.term,
+                    definition: this.selectedTerm.definition,
+                    example: this.selectedTerm.example
                 })
             }
+            this.addDictionary = false
         },
     }
 };
