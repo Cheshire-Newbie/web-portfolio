@@ -39,16 +39,22 @@
               >
             </div>
             <div class="answerField">
-              <div class="definition" v-if='selectedTerm.definition!==""'>
+              <div class="definition" v-if="selectedTerm.definition !== ''">
                 {{ selectedTerm.definition }}
               </div>
               <!-- jeśli jest zaznaczony jakiś termin i nie ma on pustego pola wpisanego w definition i/lub w example, to pokaż definition i/lub example -->
-              <div class="example" v-if='selectedTerm.definition!==""'>{{ selectedTerm.example }}</div>
+              <div class="example" v-if="selectedTerm.definition !== ''">
+                {{ selectedTerm.example }}
+              </div>
             </div>
           </v-card>
           <div class="indexDictionary">
-            <v-card @click="selectedTerm = indexTerm" v-for="(indexTerm) of terms" :key="indexTerm.term">
-              {{indexTerm.term}}
+            <v-card
+              @click="selectedTerm = indexTerm"
+              v-for="indexTerm of terms"
+              :key="indexTerm.term"
+            >
+              {{ indexTerm.term }}
             </v-card>
           </div>
         </v-card>
@@ -63,24 +69,33 @@
           <v-card color="primary" height="60vh" class="d-flex flex-column">
             <div class="answerField">
               <v-text-field
-                v-model="selectedTerm.term"
+                v-model="addTerm.term"
+                :rules="termRules"
+                required
                 clearable
+                rows="1"
                 no-resize
                 color="black"
                 label="Write the term here!"
                 class="term"
               ></v-text-field>
               <v-textarea
-                v-model="selectedTerm.definition"
+                v-model="addTerm.definition"
+                :rules="termRules"
+                required
                 clearable
+                rows="7"
                 no-resize
                 color="black"
                 label="Write the definition here!"
                 class="definition"
               ></v-textarea>
               <v-textarea
-                v-model="selectedTerm.example"
+                v-model="addTerm.example"
+                :rules="termRules"
+                required
                 clearable
+                rows="2"
                 no-resize
                 color="black"
                 label="Give an example!"
@@ -89,7 +104,12 @@
             </div>
             <div class="btnField">
               <v-card-actions>
-                <v-btn color="secondaryAccent" @click="saveTerm">Save</v-btn>
+                <v-btn
+                  color="secondaryAccent"
+                  :disabled="!valid"
+                  @click="saveTerm"
+                  >Save</v-btn
+                >
                 <v-btn @click="addDictionary = false" color="secondaryAccent"
                   >Exit</v-btn
                 >
@@ -97,6 +117,23 @@
             </div>
           </v-card>
         </v-dialog>
+
+        <!-- titaj jest kod od alertu -->
+        <v-alert
+          class="alert"
+          shaped
+          dark
+          :color="alertColor"
+          v-model="showAlert"
+          @click="
+            () => {
+              if (currentAlertResolve) currentAlertResolve();
+            }
+          "
+          transition="slide-x-reverse-transition"
+        >
+          {{ alertText }}
+        </v-alert>
       </v-card>
     </v-dialog>
   </div>

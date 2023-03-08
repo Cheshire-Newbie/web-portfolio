@@ -52,10 +52,11 @@
 }
 
 .term {
-    height: 10%;
+    height: 15%;
     width: 100%;
     border: 1px solid #424242;
     border-radius: 2%;
+    padding-top: 10px;
     padding-left: 10px;
     background-color: var(--v-secondary-darken1);
 }
@@ -65,6 +66,7 @@
     width: 100%;
     border: 1px solid #424242;
     border-radius: 2%;
+    padding-top: 10px;
     padding-left: 10px;
     background-color: var(--v-secondary-darken1);
 }
@@ -74,6 +76,7 @@
     width: 100%;
     border: 1px solid #424242;
     border-radius: 2%;
+    padding-top: 10px;
     padding-left: 10px;
     background-color: var(--v-secondary-darken1);
 }
@@ -90,3 +93,23 @@
     border-bottom: 1px solid #424242;  
     background-color: var(--v-secondary-darken2);
 }
+
+.alert {
+    position: absolute;
+    top: 10px;
+    justify-content: center;
+    width: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  
+  .v-sheet.v-alert.v-sheet--shaped {
+    border-radius: 24px 4px 4px 24px;
+  }
+  
+  .v-card>*:last-child:not(.v-btn):not(.v-chip):not(.v-avatar).v-sheet--shaped {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 24px;
+  }
