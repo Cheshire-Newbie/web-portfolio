@@ -83,7 +83,7 @@
 
 .btnField {
     display: flex;
-    min-height: 15%;
+    height: 10%;
     width: 100%;
     padding: 20px;
     align-items: center;

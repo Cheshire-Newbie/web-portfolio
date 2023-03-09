@@ -8,6 +8,7 @@ export default {
 
         showDialog: false,
         addDictionary: false,
+        search: null,
         terms: [],
         selectedTerm: {
             term: "",
