@@ -3,6 +3,7 @@ node_modules
 /dist
 
 /Firebase-config.js
+/notatki z lekcji
 
 # local env files
 .env.local

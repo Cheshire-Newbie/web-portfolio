@@ -5,6 +5,7 @@ export default {
 
     data: () => ({
         showDialog: false,
+        finished: false,
         valid: false,
         nameField: "",
         passwordField: "",

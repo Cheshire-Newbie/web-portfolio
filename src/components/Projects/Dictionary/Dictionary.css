@@ -1,13 +1,24 @@
 .containerDictionary {
     display: flex;
-    height: 92%;
+    /* max-height: calc(100% - 1rem - 36px); */
+    /* height: auto; */
+    margin: 0;
+    padding: 0;
     align-items: center;
     justify-content: center;
+    flex-basis: 0px;
+    /* flex-wrap: wrap; */
+    align-items: stretch;
+}
+
+.v-dialog > .v-card > .v-card__text.containerDictionary {
+    padding: 0;
 }
 
 .dictionaryField {
     display: flex;
-    height: 100%;
+    /* max-height: 80%; */
+ 
     width: 80%;
     gap: 10px;
     align-items: center;
@@ -16,20 +27,27 @@
 }
 
 .indexDictionary {
-    display: flex;
-    height: 100%;
+    /* max-height: 80%; */
+
     width: 20%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    padding: 20px;
     border-left: 1px solid #424242;
     background-color: var(--v-secondary-base);
 
 }
 
+.termIndex {
+    border-bottom: 1px solid #424242;
+    margin-bottom: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
 .textField {
     display: flex;
-    height: 15%;
+    flex-wrap: wrap;
+    padding: 2%;
+    flex-grow: 0;
     align-items: center;
     justify-content: space-around;
     width: 100%;
@@ -40,7 +58,7 @@
 
 .answerField {
     display: flex;
-    min-height: 85%;
+    flex-grow: 1;
     width: 100%;
     gap: 10px;
     padding: 10px;
@@ -62,7 +80,8 @@
 }
 
 .definition {
-    height: 60%;
+    flex-grow: 5;
+    flex-shrink: 1;
     width: 100%;
     border: 1px solid #424242;
     border-radius: 2%;
@@ -72,7 +91,8 @@
 }
 
 .example {
-    height: 20%;
+    flex-grow: 1;
+    flex-shrink: 1;
     width: 100%;
     border: 1px solid #424242;
     border-radius: 2%;
@@ -90,7 +110,7 @@
     justify-content: flex-end;
     border-left: 1px solid #424242;
     border-right: 1px solid #424242;
-    border-bottom: 1px solid #424242;  
+    border-bottom: 1px solid #424242;
     background-color: var(--v-secondary-darken2);
 }
 
@@ -103,13 +123,59 @@
     max-width: 100%;
     text-align: center;
     flex-wrap: wrap;
-  }
-  
-  .v-sheet.v-alert.v-sheet--shaped {
+}
+
+.v-sheet.v-alert.v-sheet--shaped {
     border-radius: 24px 4px 4px 24px;
-  }
-  
-  .v-card>*:last-child:not(.v-btn):not(.v-chip):not(.v-avatar).v-sheet--shaped {
+}
+
+.v-card>*:last-child:not(.v-btn):not(.v-chip):not(.v-avatar).v-sheet--shaped {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 24px;
-  }
+}
+
+.hamburgerIndex {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
+
+@media (max-width: 500px) {
+    .primaryCard {
+        overflow-y: hidden;
+    }
+    .hamburgerIndex {
+        display: block;      
+    }
+
+    .dictionaryField.large {
+        padding: 0px;
+        width: 100%;
+    }
+    .indexDictionary.large{
+        width: 10%;
+        min-width: fit-content;
+        height: 100%;
+        z-index: 9999;  
+        right: -100%;
+        position: absolute;
+        transition: all 0.5s;
+        transition-delay: 0.5s;
+    }
+    .indexDictionary.large.active {
+        right: 0px; 
+        transition-delay: 0s; 
+    }
+    .indexDictionary.large>div {
+        opacity: 0;
+        transition: all 0.5s;
+        transition-delay: 0s; 
+    }
+    .indexDictionary.large.active>div {
+        opacity: 1;
+        transition: all 0.5s;
+        transition-delay: 0.5s; 
+    }
+}

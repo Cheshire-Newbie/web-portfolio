@@ -2,6 +2,7 @@ export default {
     name: "Sorting",
     data: () => ({
         showDialog: false,
+        finished: true,
         unsortedArray: [],
         sortedArray: [],
         dlugosc: null,

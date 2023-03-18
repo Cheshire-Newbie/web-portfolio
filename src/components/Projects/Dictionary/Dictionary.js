@@ -1,12 +1,20 @@
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { collection, onSnapshot } from "firebase/firestore";
+import Hamburger from "../../App/Hamburger/Hamburger.vue";
 
 export default {
+
+    components: {
+        Hamburger,
+    },
 
     name: "Dictionary",
     data: () => ({
 
+        containerHeight: "0",
+
         showDialog: false,
+        finished: false,
         addDictionary: false,
         search: null,
         terms: [],
@@ -33,6 +41,7 @@ export default {
                 else return "the term, his description and example is required"
             }
         ],
+        showIndex: false,
 
 
         icon: [
@@ -52,6 +61,33 @@ export default {
 
     methods: {
 
+        onShowDialog() {
+            this.showDialog = true
+            this.waitForRefs().then(() => {
+                window.addEventListener("resize", this.onResize)
+                this.onResize()
+            })
+        },
+
+        async waitForRefs() {
+            let r
+            const p = new Promise((resolve) => r = resolve)
+            const v = this
+            const interval = setInterval(() => {
+                if (v.$refs.title) r()
+            }, 10)
+            p.then(() => clearInterval(interval))
+            return await p
+        },
+
+        onResize() {
+            
+            let title = this.$refs.title.clientHeight
+            let subtitle = this.$refs.subtitle.clientHeight
+            let actions = this.$refs.actions.clientHeight
+            this.containerHeight = `height: calc(100% - ${title + subtitle + actions}px);`
+        },
+
         reviewIndex() {
             const indexListener = onSnapshot(collection(this.$db, 'dictionary'), (querySnapshot) => {
                 this.terms = querySnapshot.docs.map(doc => doc.data())
@@ -69,19 +105,19 @@ export default {
         },
 
         async saveTerm() {
-            if(this.addTerm) {   
-            const docRef = doc(this.$db, "dictionary", this.addTerm.term)
-            const dictionaryDocument = await getDoc(docRef)
-            if (!dictionaryDocument.exists()) {
-                await setDoc(docRef, {
-                    term: this.addTerm.term,
-                    definition: this.addTerm.definition,
-                    example: this.addTerm.example
-                })
-            }
-            this.displayAlert("success", `Thank you! Your description of the term  ${this.addTerm.term} has been successfully added to our database!`)
-            this.addDictionary = false
-            this.addTerm.term = ""
+            if (this.addTerm) {
+                const docRef = doc(this.$db, "dictionary", this.addTerm.term)
+                const dictionaryDocument = await getDoc(docRef)
+                if (!dictionaryDocument.exists()) {
+                    await setDoc(docRef, {
+                        term: this.addTerm.term,
+                        definition: this.addTerm.definition,
+                        example: this.addTerm.example
+                    })
+                }
+                this.displayAlert("success", `Thank you! Your description of the term  ${this.addTerm.term} has been successfully added to our database!`)
+                this.addDictionary = false
+                this.addTerm.term = ""
                 this.addTerm.definition = ""
                 this.addTerm.example = ""
             }
@@ -111,5 +147,25 @@ export default {
                 this.currentAlertResolve = null
             })
         },
-    }
+
+        menuIndex() {
+            const showIndexElement = document.querySelector(".indexDictionary");
+            if (window.matchMedia("(max-width: 500px)").matches) {
+                if (this.showIndex) {
+                    this.showIndex = !this.showIndex;
+                    // setTimeout(() => {
+                    showIndexElement.classList.toggle("active");
+                    // }, 500);
+                } else {
+                    showIndexElement.classList.toggle("active");
+                    // setTimeout(() => {
+                    this.showIndex = !this.showIndex;
+                    // }, 500);
+                }
+                const hamburgerElement = document.querySelector(".hamburger");
+                hamburgerElement.classList.toggle("active");
+            }
+        }
+
+    },
 };

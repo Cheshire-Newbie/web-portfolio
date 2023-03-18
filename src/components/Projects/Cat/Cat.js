@@ -5,6 +5,7 @@ export default {
   data: () => ({
 
     showDialog: false,
+    finished: true,
     catSurprise: obrazek2,
     isButton: true,
     catIsMoving: false,

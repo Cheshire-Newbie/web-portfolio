@@ -6,6 +6,8 @@ import Dictionary from "./Dictionary/Dictionary.vue";
 
 export default {
 
+  mounted() { console.log(this.projects) },
+
   components: {
     ProjectOverview,
   },
@@ -14,9 +16,18 @@ export default {
     
     projects: [
       {component:Cat},{component:GameArcher}, {component:Sorting}, {component:Dictionary},
-    ]
+    ],
 
   }),
+
+  computed: {
+    finishedProjects() {
+        return this.projects.filter(project => project.component.data().finished)
+    },
+    unfinishedProjects() {
+        return this.projects.filter(project => !project.component.data().finished)
+    }
+},
 
   methods: {
   }

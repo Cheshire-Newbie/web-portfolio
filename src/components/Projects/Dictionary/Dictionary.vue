@@ -1,21 +1,24 @@
 <template>
   <div>
-    <v-btn depressed color="secondaryAccent" @click="showDialog = true"
+    <v-btn depressed color="secondaryAccent" @click="onShowDialog"
       >Try it live</v-btn
     >
     <v-dialog fullscreen v-model="showDialog">
-      <v-card
+      <v-card class="primaryCard"
         color="primary"
-        class="d-flex flex-column"
+        
+        style="overflow-x: hidden;"
         width="100%"
-        height="100%"
+        height="100vh"
       >
-        <v-card-title>{{ title }}</v-card-title>
-        <v-card-text>{{ description }}</v-card-text>
-        <v-card tile color="background" class="containerDictionary">
-          <v-card class="dictionaryField pa-3">
+      <Hamburger class="hamburgerIndex" @showEvent="menuIndex" />
+        <v-card-title ref="title" style="flex-grow: 0; flex-shrink: 0">{{ title }}</v-card-title>
+        <v-card-subtitle ref="subtitle" style="flex-grow: 0; flex-shrink: 0">{{ description }}</v-card-subtitle>
+
+        <v-card-text ref="containerDictionary" :style="containerHeight" tile color="background" class="containerDictionary">
+          <v-card class="dictionaryField large pa-3">
             <div class="textField">
-              <v-card width="50%" min-width="200px" class="ma-3 mt-0">
+              <v-card width="50%" min-width="300px" class="ma-3 mt-0">
                 <v-combobox
                   v-model="selectedTerm"
                   label="Enter the term you seek!"
@@ -60,17 +63,20 @@
               </div>
             </div>
           </v-card>
-          <div class="indexDictionary">
+
+          <div class="indexDictionary large overflow-auto">
             <v-card
-              @click="selectedTerm = indexTerm"
+              class="termIndex"
+              color="primary"
+              @click="selectedTerm = indexTerm, menuIndex()"
               v-for="indexTerm of terms"
               :key="indexTerm.term"
             >
               {{ indexTerm.term }}
             </v-card>
           </div>
-        </v-card>
-        <v-card-actions class="d-flex justify-end align-center">
+        </v-card-text>
+        <v-card-actions ref="actions" style="flex-grow: 0; flex-shrink: 0" class="d-flex justify-end align-center">
           <v-btn @click="showDialog = false" color="secondaryAccent"
             >Exit</v-btn
           >
