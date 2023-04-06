@@ -1,5 +1,6 @@
 import MenuList from "./MenuList/MenuList.vue";
 import Hamburger from "./Hamburger/Hamburger.vue";
+import { setTimeout } from "core-js";
 
 export default {
 
@@ -14,7 +15,18 @@ export default {
 
         showMenuList: false,
         lightBulbIcon: "mdi-weather-night",
+        logoBackElement: true,
+        logoElement: false,
+        Logo: {
+            light: require("@/assets/logo-light-mode.png"),
+            dark: require("@/assets/logo-darl-mode.png")
+        },
+        currentLogo: "light",
     }),
+
+    mounted() {
+        this.TransitionEnter()
+    },
 
     methods: {
         menuStart() {
@@ -40,7 +52,26 @@ export default {
                 this.lightBulbIcon = "mdi-weather-night"
             else this.lightBulbIcon = "mdi-white-balance-sunny"
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+        },
+
+
+        TransitionEnter() {
+            if (!this.logoElement) {
+
+
+                if (this.$vuetify.theme.dark) this.currentLogo = this.Logo.dark
+                else this.currentLogo = this.Logo.light
+
+                this.logoElement = true
+                setTimeout(() => {
+                    this.logoElement = false
+                }, 3000);
+                setTimeout(() => {
+                    this.logoBackElement = false
+                }, 5000);
+            }
         }
+
 
     },
 
