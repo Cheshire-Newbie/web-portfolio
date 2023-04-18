@@ -41,25 +41,17 @@
     gap: 10px;
 }
 
-.lightLogo {
+.center {
     position: absolute;
-    max-width: 487px;
-    max-height: 178px;
     z-index: 9999;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 1;
-    transition: opacity 3s 0s ease-in-out;
 }
 
-/* .logo-enter-active,
-    .logo-leave-active {
+.logo-leave-active {
     transition: opacity 3s 0s ease-in-out;
-    }
-     */
-.logo-enter {
-    opacity: 0;
 }
 
 .logo-leave-to {

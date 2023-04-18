@@ -1,12 +1,17 @@
 import MenuList from "./MenuList/MenuList.vue";
 import Hamburger from "./Hamburger/Hamburger.vue";
 import { setTimeout } from "core-js";
+import Logo from "../Logo/Logo.vue";
+
+let finishedResolve
+const finished = new Promise(resolve => finishedResolve = resolve)
 
 export default {
 
     components: {
         MenuList,
         Hamburger,
+        Logo,
     },
 
     name: "App",
@@ -16,16 +21,39 @@ export default {
         showMenuList: false,
         lightBulbIcon: "mdi-weather-night",
         logoBackElement: true,
-        logoElement: false,
-        Logo: {
-            light: require("@/assets/logo-light-mode.png"),
-            dark: require("@/assets/logo-darl-mode.png")
-        },
-        currentLogo: "light",
+        logoElement: true,
+        finished
     }),
 
-    mounted() {
-        this.TransitionEnter()
+    created() {
+        // tutaj ustawiam tryb dzienny i nocny zalezny od godziny
+        // jesli godzina jest mniejsza od 8 i wieksza od 19 
+        // to wtedy theme.dark jest true, jak nie, to false
+        const t = new Date().getHours();
+            this.$vuetify.theme.dark = t < 8 || t > 19
+    },
+
+    // W Vue.js computed properties pozwalają na tworzenie właściwości, które można użyć do modyfikowania, manipulowania
+    //  i wyświetlania danych w komponentach w czytelny i wydajny sposób. Można ich użyć do obliczania i wyświetlania 
+    //  wartości na podstawie wartości lub zestawu wartości w modelu danych 1.
+    // Właściwości te automatycznie śledzą swoje zależności reaktywne. Vue jest świadomy tego, że 
+    // obliczenie publishedBooksMessage zależy od author.books, więc zaktualizuje wszystkie powiązania zależne od 
+    // publishedBooksMessage, gdy author.books się zmieni 
+    computed: {
+        routeName() {
+            return this.$route.name
+        }
+    },
+    // W Vue.js watch to właściwość, która pozwala na obserwowanie zmian w danych i wykonywanie odpowiednich działań w 
+    // przypadku ich zmiany. Watcherzy są bardzo przydatne w przypadku potrzeby wykonywania jakichś działań po zmianie danych 
+    // lub w przypadku potrzeby wykonywania jakichś działań przed zmianą danych
+    watch: {
+        routeName(newValue, oldValue) {
+            if (newValue === "Home") {
+                this.logoElement = true
+                this.logoBackElement = true
+            }
+        }
     },
 
     methods: {
@@ -54,25 +82,11 @@ export default {
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark
         },
 
-
-        TransitionEnter() {
-            if (!this.logoElement) {
-
-
-                if (this.$vuetify.theme.dark) this.currentLogo = this.Logo.dark
-                else this.currentLogo = this.Logo.light
-
-                this.logoElement = true
-                setTimeout(() => {
-                    this.logoElement = false
-                }, 3000);
-                setTimeout(() => {
-                    this.logoBackElement = false
-                }, 5000);
-            }
+        hideLogo() {
+            this.logoElement = false
+            this.logoBackElement = false
+            finishedResolve()
         }
-
-
     },
 
 

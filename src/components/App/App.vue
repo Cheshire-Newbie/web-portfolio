@@ -22,18 +22,13 @@
     </v-app-bar>
     <transition name="logoBackground">
       <div v-if="logoBackElement" class="logoBack" />
-    </transition>
+    </transition> 
     <transition name="logo">
-      <img
-        :src="Logo.dark"
-        class="lightLogo"
-        v-if="logoElement && $vuetify.theme.dark"
-      />
-      <img :src="Logo.light" class="lightLogo" v-else-if="logoElement" />
+      <Logo @finished="hideLogo" class="center" v-if="logoElement"/>
     </transition>
     <v-main>
       <MenuList app :show="showMenuList" @close="menuStart" />
-      <router-view> </router-view>
+      <router-view :finished="finished"> </router-view>
     </v-main>
   </v-app>
 </template>
