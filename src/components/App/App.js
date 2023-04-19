@@ -49,6 +49,7 @@ export default {
     // lub w przypadku potrzeby wykonywania jakichś działań przed zmianą danych
     watch: {
         routeName(newValue, oldValue) {
+            console.log(newValue, oldValue)
             if (newValue === "Home") {
                 this.logoElement = true
                 this.logoBackElement = true
@@ -83,6 +84,7 @@ export default {
         },
 
         hideLogo() {
+            console.log(this.$vuetify.theme)
             this.logoElement = false
             this.logoBackElement = false
             finishedResolve()

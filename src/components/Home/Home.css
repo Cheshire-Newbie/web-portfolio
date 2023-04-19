@@ -3,6 +3,22 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  background: linear-gradient(300deg, var(--v-background-base), var(--v-primary-base), var(--v-secondary-base), var(--v-tertiary-base));
+  background-size: 300% 300%;
+  animation: gradient-animation 25s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .homeMessage {

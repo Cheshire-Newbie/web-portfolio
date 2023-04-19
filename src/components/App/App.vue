@@ -1,9 +1,9 @@
 <template>
-  <v-app id="container" color="background">
+  <v-app id="container">
     <v-app-bar
       absolute
       class="menu-bar"
-      color="background"
+     
       flat
       elevation="0"
       app
