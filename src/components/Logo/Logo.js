@@ -153,8 +153,9 @@ export default {
             }
             const elapsed = timestamp - this.animationStart;
             if (this.previousTimeStamp !== timestamp) {
-                this.ctx.fillStyle = this.background
-                this.ctx.fillRect(0, 0, this.width * this.mx, this.height * this.my)
+                // this.ctx.fillStyle = this.background
+                // this.ctx.fillRect(0, 0, this.width * this.mx, this.height * this.my)
+                this.ctx.clearRect(0, 0, this.width * this.mx, this.height * this.my)
                 this.lines.forEach(line => {
                     line.motionTick(elapsed)
                     line.draw()

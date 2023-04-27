@@ -20,8 +20,8 @@ export default {
 
         showMenuList: false,
         lightBulbIcon: "mdi-weather-night",
-        logoBackElement: true,
-        logoElement: true,
+        logoBackElement: false,
+        logoElement: false,
         finished
     }),
 

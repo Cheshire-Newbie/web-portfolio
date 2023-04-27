@@ -6,18 +6,24 @@
 
   background: linear-gradient(300deg, var(--v-background-base), var(--v-primary-base), var(--v-secondary-base), var(--v-tertiary-base));
   background-size: 300% 300%;
-  animation: gradient-animation 25s ease infinite;
+  animation: gradient-animation 15s ease infinite;
 }
 
 @keyframes gradient-animation {
   0% {
-    background-position: 0% 50%;
+    background-position: left;
+  }
+  25% {
+    background-position: top;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: right;
+  }
+  75% {
+    background-position: bottom;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: left;
   }
 }
 
@@ -36,12 +42,14 @@
 }
 
 .slide-left-enter-active,
-.slide-right-enter-active {
+.slide-right-enter-active,
+.slide-bottom-enter-active {
   transition: all 3s ease-in-out;
 }
 
 .slide-left-enter,
-.slide-right-enter {
+.slide-right-enter,
+.slide-bottom-enter {
   opacity: 0;
 }
 
@@ -51,6 +59,10 @@
 
 .slide-right-enter {
   transform: translateX(50px);
+}
+
+.slide-bottom-enter {
+  transform: translateY(-50px);
 }
 
 .languageBar {

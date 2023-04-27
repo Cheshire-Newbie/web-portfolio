@@ -19,17 +19,19 @@
         Keep your boots on, select your language and come in!
       </h2>
     </transition>
-    <div class="languageBar">
-      <v-btn depressed icon>
+    <transition name="slide-bottom">
+    <div v-if="BottonElement" class="languageBar">
+      <v-btn depressed icon to="/about_me">
         <img width="40px" height="40px" :src="italyFlag" />
       </v-btn>
-      <v-btn depressed icon>
+      <v-btn depressed icon to="/about_me">
         <img width="40px" height="40px" :src="polandFlag" />
       </v-btn>
-      <v-btn depressed icon>
+      <v-btn depressed icon to="/about_me">
         <img width="40px" height="40px" :src="ukFlag" />
       </v-btn>
     </div>
+    </transition>
   </div>
 </template>
 

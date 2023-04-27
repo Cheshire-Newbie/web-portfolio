@@ -14,6 +14,7 @@ export default {
     nameElement: false,
     specialistElement: false,
     InvitationElement: false,
+    BottonElement: false,
 
     italyFlag: flagIT,
     polandFlag: flagPL,
@@ -30,16 +31,19 @@ export default {
       await this.finished
       setTimeout(() => {
         this.titleElement = true
-      }, 4000);
+      }, 3000);
       setTimeout(() => {
         this.nameElement = true
-      }, 6000);
+      }, 5000);
       setTimeout(() => {
         this.specialistElement = true
-      }, 8000);
+      }, 7000);
       setTimeout(() => {
         this.InvitationElement = true
-      }, 10000);
+      }, 9000);
+      setTimeout(() => {
+        this.BottonElement = true
+      }, 11000);
     }
   }
 };
