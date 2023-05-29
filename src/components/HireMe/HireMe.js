@@ -1,25 +1,23 @@
 
-
 export default {
-    name: "HireMe",
-    
-//   mounted() {
-//     const zwierze = document.querySelector(".zwierzeta")
+  name: "HireMe",
 
-// let zubry= [
-//   "zubrZimowy",
-//   "zubrKwiecisty",
-//   "zubrMalopolski"
-// ]
+  data: () => ({
+    email: "",
+    subject: "",
+    message: "",
+  }),
 
-// for(let zuber of zubry) {
-//   let divDlaZubra = document.createElement("div")
-//   divDlaZubra.appendChild(document.createTextNode(zuber))
-//   zwierze.appendChild(divDlaZubra)
-// }
-//   },
-    
-    data: () => ({
+  methods: {
+    sendEmail() {
+      const email = `mailto:barbierimarta93@gmail.com?subject=${encodeURIComponent(this.subject)}&body=${encodeURIComponent(this.message)}`;
+      const linkElement = document.createElement("a")
+      linkElement.href = email
+      linkElement.click()
+    },
 
-    }),
-  };
+    changeImage() {
+      
+    },
+  }
+}

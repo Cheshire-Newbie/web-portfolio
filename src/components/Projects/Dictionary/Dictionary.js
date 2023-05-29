@@ -14,7 +14,7 @@ export default {
         containerHeight: "0",
 
         showDialog: false,
-        finished: false,
+        finished: true,
         addDictionary: false,
         search: null,
         terms: [],
