@@ -1,0 +1,213 @@
+issue:
+
+//////////TODO absolutnie rozpracuj linie z kropkami do zaznaczenia na jakiej stronie jestes
+//moglyby byc przekazywane jako prop do dataInsert z componentow rodzicow
+//potrzebny jest jeszcze jeden prop w datainsert z tym niebieskim napisem "te pola musisz uzupelnic" qw zaleznosci od
+//componentu na ktorym sie znajdujemy
+
+
+
+//TODO ze zbysiem jutro backend
+
+//logika w kodzie dla data-insert:
+dataInsert.svelte:
+
+import {getContext} from "svelte";
+import {dataInsert} from "./DictionaryFile.js";
+
+const language =getContext("language")
+const lineLabels = dataInsert[language].linelabels
+
+<main>
+	<div>
+		<h1><slot name="header"/></h1>
+	</div>
+	<div>
+		<slot name="next"/>
+	</div>
+</main>
+
+
+
+//view componentu basic-data
+//UWAGA UWAGA	
+//zamiast pakowac kazdy komponent do dataInsert, to dataInsert uzywamy jako 
+//templatki, ktora wykorzystujemy jako tlo dla kazdego komponentu ktory tworzymy,
+//jak nationality, basic data, social etc
+basicData.svelte:
+
+import {getContext} from "svelte";
+import {basicData} from "./DictionaryFile.js";
+import dataInsert from "./dataInsert.svelte"
+
+const language =getContext("language")
+const header = basicData[language].header
+const next = basicData[language].next;
+
+<main>
+<dataInsert>
+<span slot="header">{header}</span>
+<button slot="next" on:click={() => history.pushState({}, "", "/candidate/social")}>{next}</button>
+</dataInsert>
+</main>
+
+
+
+tworzymy jakis file.js export default object ktory jest slownikiem
+key - 
+"landing-page"
+"preferred-language"
+"tutorial-page"
+"candidate/nationality"
+"candidate/languages"
+"candidate/basic-data"
+"candidate/social"
+"candidate/extra-data"
+"candidate/upload-cv"
+"candidate/modal/access-device"
+"candidate/modal/privacy-policy"
+"candidate/success"
+
+//aktualnie jest jeden jezyk, robimy to dla przyszlosci 
+dla update gdzie bedzie mozliwosc nawet tej czesci
+ogarnac pod inne jezyki
+"admin/login-page"
+"admin/dashboard"
+"admin/profile-list"
+"admin/profile-filter"
+"admin/candidate-detail"
+"admin/popup"
+"admin/note"
+
+pod kazdym z key jest object
+przyklad jak to zrobic:
+
+DictionaryFile.js:
+
+export landingPage {
+        "PL":{
+            "header1": "To jest tekst nagłówka 1",
+            "header2": "To jest tekst nagłówka 2"
+        }
+	"EN": {
+	    "header1": "This is text for header1",
+            "header2": "This is text for header2"
+	}
+    }
+}
+
+export dataInsert{
+        "PL":{
+            "lineLabels": [
+		"nationality",
+		"languages",
+		"basic-data", //.....
+		]
+        }
+	"EN": {
+	    "lineLabels": [
+		"nationality",
+		"languages",
+		"basic-data", //.....
+		]
+	}
+    }
+}
+
+export basicData { 
+	 "EN": {
+		"header": "3. Basic Data",
+            	"header2": "This is text"
+		}
+	}
+
+
+//to oznacza zas ze w przycisku jezyk w stronie wyboru 
+PreferredLanguage.svelte:
+import {setContext} from "svelte";
+
+onclick(() => {setContext("language", "PL")} => zapisz to w localStorage
+
+//To oznacza ze w App mamy to
+App.svelte:
+
+import {setContext} from "svelte";
+
+if(czy w localstorage mamy zmienna jezyk z wartoscia){
+setContext("language", "to co zapisane w localStorage")
+} else {
+setContext("language", "EN");
+} 
+
+let currentComponent = null
+
+window.addEventListener('popstate', async () => { 
+const path = window.location.pathname;
+
+switch(path) {
+case "/landing-page":
+const module = await import('./components/landingPage.svelte')
+currentComponent = module.default
+break;
+
+case "/tutorial-page":
+const module = await import('./components/tutorialPage.svelte')
+currentComponent = module.default
+break;
+
+default:
+const module = await import('./components/landingPage.svelte')
+currentComponent = module.default
+}
+
+
+
+//to oznacza ze w odpowiednim file gdzie tworze layoult mam cos takiego
+
+LayoutPage.svelte:
+
+import {getContext} from "svelte";
+import {landingPage} from "./DictionaryFile.js";
+//do zmiennej language przypisuje wartosc jezyk, ktora jest przekazywana do komponentu poprzez getContext, poprzednio przesylana z
+//PreferredLanguage w anonimowej funkcji click
+const language =getContext("language")
+//DESTRUKTURYZACJA OBIEKTU
+//do zmiennych header1 i header2 przypisujemy wartosci pol header1 i header2 z obiektu landingPage[language]
+const {header1, header2} = landingPage[language];
+//przyklad dla idioty bez destrukturyzacji obiektu
+//do zmiennej header1 przypisujemy wartosc pola header1 z obiektu language, ktory jest w obiekcie landingPage
+// const header1 = landingPage[language].header1;
+// const header2 = landingPage[language].header2;
+
+<main>
+	<div>
+		<h1>{header1}</h1>
+	</div>
+	<div>
+		<h1>{header2}</h1>
+	</div>
+</main>
+
+//KWESTIA ROUTOWANIA!!!!!!!!!!
+//ogarniemy ja czysto w javascrypt, gdzie bedziemy mieli metode na routing co polaczymy z app.svelte importujac to
+pod kazdym z guzikow NEXT bedziemy przechodzic na nowa strona <button on:click={() => history.pushState({}, "", "/nowyPATH")}/>
+//ta funkcja sprawia ze w app.svelte jest przechwytywany event popstate, a wartosc path jest ustawiana na nowy path
+
+
+
+- for upload file =  <input type="file"> ||
+//or nie dziala, bo to nie przycisk, a przeciaganie
+<button const input = document.createElement("input"); 
+input.setAttribute("type", "file");
+input.addEventListener('change', fileSelectHandler);
+input.click();/>
+
+/funkcja dla obslugi losow pliku po wybraniu go
+function fileSelectHandler(event) {
+const files = event.target.files
+if(files.length > 0) { //przeprocesuj plik
+} else {
+//typ nie wybrał pliku więc nic się nie dzieje
+}
+}
+
