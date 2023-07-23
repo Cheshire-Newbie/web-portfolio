@@ -27,7 +27,8 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: z0al/dependent-issues@v1.5.2
+    #to zmienione
+      - uses: z0al/dependent-issues@v1.5.2 
         env:
           # (Required) The token to use to make API calls to GitHub.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,7 +38,7 @@ jobs:
         with:
           # (Optional) The label to use to mark dependent issues
           label: dependent
-
+#zmienione na on, by sprawdzalo jeszcze raz
           # (Optional) Enable checking for dependencies in issues.
           # Enable by setting the value to "on". Default "off"
           check_issues: on
@@ -52,8 +53,7 @@ jobs:
 
           # (Optional) A custom comment body. It supports `{{ dependencies }}` token.
           comment: >
-            This PR/issue depends on:
-
-            {{ dependencies }}
-
+            This issue depends on: 
+            {{ dependencies }}      
+            Remember to finish all issues this issue depends on, before closing this issue.
             By **[Dependent Issues](https://github.com/z0al/dependent-issues)** (🤖). Happy coding!
