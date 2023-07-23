@@ -1,0 +1,116 @@
+Issue FrontEnd
+
+//CANDIDATE
+(te issusue beda dla kazdej karty/potem przeciagne zdjecie)
+Create "candidate/landing-page" on mobile
+adjust "candidate/landing-page" to big screens
+
+Create "candidate/choose-your-language" page on mobile
+adjust "candidate/choose-your-language" page to big screens
+
+Create "candidate/tutorial-template" as template for internal components on mobile
+adjust "candidate/tutorial-template" page to big screens
+
+Create component "candidate/welcome" and use template "candidate/tutorial-template" on mobile
+ajust component "candidate/welcome" to big sreens
+
+Create component "candidate/what-are-you-going-to-do" and use template "candidate/tutorial-template" on mobile
+ajust component "candidate/what-are-you-going-to-do" to big sreens
+
+Create component "candidate/what-happens" and use template "candidate/tutorial-template" on mobile
+ajust component "candidate/what-happens" to big sreens
+
+Create "candidate/data-insert-template" as template for internal components on mobile
+adjust "candidate/data-insert-template" page to big screens
+
+Create component "1.nationality" and use template "candidate/data-insert-template" on mobile
+ajust component "1.nationality" to big sreens
+
+Create component "2.languages" and use template "candidate/data-insert-template" on mobile
+ajust component "2.languages" to big sreens
+
+Create component "3.basic-data" and use template "candidate/data-insert-template" on mobile
+ajust component "3.basic-data" to big sreens
+
+Create component "4.social" and use template "candidate/data-insert-template" on mobile
+ajust component "4.social" to big sreens
+
+Create component "5.extra-data" and use template "candidate/data-insert-template" on mobile
+ajust component "5.extra-data"" to big sreens
+
+Create component "6.upload-cv" and use template "candidate/data-insert-template" on mobile
+ajust component upload-cv to big sreens
+
+Create popup for "canditate/access-device" required by component "6.upload-cv"
+ajust size popup "candidate/access-device" to big screen
+
+Create required modal with "candidate/privacy-policy" on mobile
+ajust modal "candidate/privacy-policy" to big screens
+
+Create "candidate/success" page on mobile
+adjust "candidate/success" page to big screens
+
+
+//ADMIN
+
+Create "admin/login-page" page on mobile
+adjust "admin/login-page" page to big screens
+
+Create "admin/dashboard-template" as template for internal components on mobile
+adjust "admin/dashboard-template" page to big screens
+
+Create modal with "admin/note" on mobile
+ajust modal "admin/note" to big screens
+
+Create component "admin/profile-list" and use template "admin/dashboard-template" on mobile
+ajust component "admin/profile list" to big sreens
+
+Create component "admin/profile-candidate" and use template "admin/profile-list" on mobile
+ajust component "admin/profile-candidate" to big sreens
+
+Create component "admin/profile-detail" and use template "admin/dashboard-template" on mobile
+ajust component "admin/profile-detail" to big sreens
+
+Create component with "profile-filter" on mobile
+ajust component "profile-filter" to big screens
+
+Create modal with component "profile-filter"opened from "admin/profile-list" with funnel button on mobile
+Insert in component "admin/profile-list" the component "profile-filter" on big screens
+
+Create popup for "admin/popup" collegate to component "???"
+ajust size popup "admin/popup" to big screen
+
+- Add functionality to dynamically choose language
+- Add functionality to upload cv file
+- Add functionality to authenticate user by email and password
+
+
+
+
+
+//BACKEND
+
+- Add functionality to Create new data to DB
+- Add functionality to Read data from DB
+- Add functionality to Update data in DB
+- Add functionality to Delete data from DB
+- Add functionality to ensure only unique profiles are added to DB
+- Add functionality to CRUD admin notes
+- Add functionality to process cv file
+- maybe other functionalities
+- create db relationship mapping for "admin/profile-candidate" component
+	(foreach z lista candidate i wyszukiwanie przez ID)
+- create db relationship mapping for "admin/profile-filter"  
+	(list z filter)
+- create db relationship mapping for "admin/dashboard"  (candidates and notes)
+- create db relationship mapping for "admin/note"
+
+
+//DB
+
+- create table for candidate
+- connect SQL to Backend
+- create Candidate class
+- create Note class
+
+
