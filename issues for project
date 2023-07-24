@@ -99,7 +99,7 @@ ajust size popup "admin/popup" to big screen
 - Add functionality to process cv file
 - maybe other functionalities
 - create db relationship mapping for "admin/profile-candidate" component
-	(foreach z lista candidate i wyszukiwanie przez ID)
+	(foreach z lista candidate i wyszukiwanie przez ID/date)
 - create db relationship mapping for "admin/profile-filter"  
 	(list z filter)
 - create db relationship mapping for "admin/dashboard"  (candidates and notes)
